@@ -21,8 +21,8 @@ app.use(cors());
 
 
 // import models
-// const { Users, Photos, Comments, Profiles } = require('./models');
-//2 LINES ABOVE NEED TO BE COMMENTED TO RUN SERVER WITHOUT DATABASE BEING CREATED
+const { Users, Photos, Comments, Profiles } = require('./models');
+//LINE ABOVE NEED TO BE COMMENTED TO RUN SERVER WITHOUT DATABASE BEING CREATED
 const PORT = process.env.PORT || 3001
 
 
@@ -148,7 +148,7 @@ app.put('/photos/:username', async (req, res) => {
           image: req.body.image,
           description: req.body.description,
           street: req.body.street,
-          crossStreet: req.body.crossStreet,
+          cross_street: req.body.cross_street,
           filter: req.body.filter
         };
         const photoPut = await Photos.update(updatePhoto, { where: { username: username } })
@@ -171,10 +171,10 @@ app.post('/photos/:username', async (req, res) => {
   })
 
 // DELETE /photo
-  app.delete('/photos/:username', async (req, res) => {
+  app.delete('/photos/:photo_id', async (req, res) => {
     try {
-      const username = req.params.username;
-      const deletePhoto = await Photos.destroy({ where: {username: username} });
+      const selectedPhoto = req.params.photo_id;
+      const deletePhoto = await Photos.destroy({ where: {photo_id: selectedPhoto} });
       res.json(deletePhoto);
     } catch (e) {
       console.error(e);
@@ -204,9 +204,9 @@ app.put('/profiles/:user_id', async (req, res) => {
     try {
         const profileId = req.params.user_id
         const updateProfile = {
-          profileDesc: req.body.name,
+          profile_desc: req.body.profile_desc,
           contact: req.body.contact,
-          nextPeform: req.body.nextPeform
+          next_perform: req.body.next_perform
         };
         const profilePut = await Profiles.update(updateProfile, { where: { user_id: profileId } })
         res.json(profilePut)
@@ -248,7 +248,7 @@ app.post('/profiles/:user_id', async (req, res) => {
 app.get("/*", function (request, response) {
         response.sendFile(path.join(__dirname, "build", "index.html"));
     });
+/// ??????????? what is "build"
 
 
-
-app.listen(PORT, () => console.log(`Streetsagram app listening on port ${PORT}!`))
+app.listen(PORT, () => console.log(`Streetstagram app listening on port ${PORT}!`))
