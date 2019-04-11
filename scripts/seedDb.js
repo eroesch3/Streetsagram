@@ -21,14 +21,14 @@ const main = async() => {
     // Add seed here - users
 
     const user1 = await User.create({
-        userName:'Com Truise',
-        email:'liltomtom@gail.com',
+        userName:'ComTruise',
+        email:'a@a',
         token:''
     });
 
     const user2 = await User.create({
-        userName:'Larry Johnson',
-        email:'basket@gmial.com',
+        userName:'bubbagurl',
+        email:'b@b',
         token:''
     });
 
