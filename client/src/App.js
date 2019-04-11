@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Switch, Link, Route } from 'react-router-dom'
 import ImageUploader from 'react-images-upload';
+import Feed from './Components/Feed'
 /* import components here */
 
 /* global variables here */
