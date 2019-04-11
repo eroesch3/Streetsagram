@@ -79,13 +79,13 @@ const Comments = db.define('comments', {
         notEmpty: true,
         field: 'id'
       },
-    photoId: {
+    photo_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         notEmpty: true,
         field: 'photo id'
     },
-    userId: {
+    user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         notEmpty: true,
