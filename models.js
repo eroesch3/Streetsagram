@@ -34,6 +34,7 @@ const Users = db.define('users', {
             this.setDataValue('email', val.toLowerCase())
         }
     },
+    password_digest: Sequelize.STRING,
     timestamps: false,
 })
 
