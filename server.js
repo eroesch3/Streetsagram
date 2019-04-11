@@ -16,7 +16,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json())
 app.use(cors());
 // app.use("/", express.static("./streetsagram/"));
-//USE ABOVE LINE WHEN WE DEPLOYE
+//USE ABOVE LINE WHEN WE DEPLOYE !!!
 
 
 
@@ -49,9 +49,9 @@ app.get('/user/:username', async (req, res) => {
         const username = req.params.username
         //NOT 100% SURE NEED (or CAN USE) LINE DIRECTLY ABOVE
 
-        const user = await Users.findAll({ where: { username: username } })
+        const userGet = await Users.findAll({ where: { username: username } })
         res.json({
-            user
+            userGet
         })
     } catch (e) {
         res.status(500).json({
@@ -59,6 +59,31 @@ app.get('/user/:username', async (req, res) => {
         })
     }
 })
+
+
+// PUT /users
+
+app.put('/user/:username', async (req, res) => {
+    try {
+        const username = req.params.username
+        const updateUser = {
+          username: req.body.name,
+          email: req.body.email
+        };
+        const userPut = await Users.update(updateUser, { where: { username: username } })
+        res.json(userPut)
+      } catch(e) {
+        console.error(e)
+        res.status(500).json({message: e.message})
+      }
+    
+})
+
+
+
+
+
+
 
 
 // GET /comments
@@ -95,7 +120,24 @@ app.get('/profiles/:user_id', async (req, res) => {
     }
 })
 
+// PUT /profiles
 
+app.put('/profiles/:user_id', async (req, res) => {
+    try {
+        //STOPPED HERE 6:44
+        const username = req.params.username
+        const updateUser = {
+          username: req.body.name,
+          email: req.body.email
+        };
+        const userPut = await Users.update(updateUser, { where: { username: username } })
+        res.json(userPut)
+      } catch(e) {
+        console.error(e)
+        res.status(500).json({message: e.message})
+      }
+    
+})
 
 
 
