@@ -35,7 +35,7 @@ const main = async() => {
     // Add seed here - photos
 
     const photo1 = await Photos.create({
-       images:'https://imgur.com/laB0X2v',
+       image:'https://imgur.com/laB0X2v',
        description:'Graffiti2',
        street:'lafayette st.',
        cross_street:'broadway ',
@@ -43,7 +43,7 @@ const main = async() => {
     });
 
     const photo2 = await Photos.create({
-        images:'https://imgur.com/rKnzY5O',
+        image:'https://imgur.com/rKnzY5O',
         description:'Tun tun tunnel',
         street:'Bedford St.',
         croos_street:'N7',
@@ -51,7 +51,7 @@ const main = async() => {
      });
 
      const photo3 = await Photos.create({
-        images:'https://imgur.com/adQW7nt',
+        image:'https://imgur.com/adQW7nt',
         description:'Mad City',
         street:'7th Ave.',
         cross_street:'36th St.',
@@ -59,7 +59,7 @@ const main = async() => {
      });
 
      const photo4 = await Photos.create({
-        images:'https://imgur.com/SIwSh1f',
+        image:'https://imgur.com/SIwSh1f',
         description:'Doin ma thang',
         street:'Northen Blvd.',
         cross_street:'43th St.',
@@ -67,7 +67,7 @@ const main = async() => {
      });
 
      const photo5 = await Photos.create({
-        images:'https://imgur.com/jW9MrzQ',
+        image:'https://imgur.com/jW9MrzQ',
         description:'Doing ya thang',
         street:'Southern Blvd.',
         cross_street:'87th st.',
