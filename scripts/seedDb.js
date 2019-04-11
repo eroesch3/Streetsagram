@@ -1,14 +1,14 @@
-const { User, Profile, Photos, Comments} = require('../models')
+const { Users, Profiles, Photos, Comments} = require('../models')
 
 const main = async() => {
 
     // delete databse
 
-    await User.destroy({
+    await Users.destroy({
         where:{}
     });
 
-    await Profile.destroy({
+    await Profiles.destroy({
         where:{}
     });
     await Photos.destroy({
@@ -20,13 +20,13 @@ const main = async() => {
 
     // Add seed here - users
 
-    const user1 = await User.create({
+    const user1 = await Users.create({
         userName:'ComTruise',
         email:'a@a',
         token:''
     });
 
-    const user2 = await User.create({
+    const user2 = await Users.create({
         userName:'bubbagurl',
         email:'b@b',
         token:''
@@ -38,7 +38,7 @@ const main = async() => {
        images:'https://imgur.com/laB0X2v',
        description:'Graffiti2',
        street:'lafayette st.',
-       croosStreet:'broadway ',
+       cross_street:'broadway ',
        filter:''
     });
 
@@ -46,7 +46,7 @@ const main = async() => {
         images:'https://imgur.com/rKnzY5O',
         description:'Tun tun tunnel',
         street:'Bedford St.',
-        croosStreet:'N7',
+        croos_street:'N7',
         filter:''
      });
 
@@ -54,7 +54,7 @@ const main = async() => {
         images:'https://imgur.com/adQW7nt',
         description:'Mad City',
         street:'7th Ave.',
-        croosStreet:'36th St.',
+        cross_street:'36th St.',
         filter:''
      });
 
@@ -62,7 +62,7 @@ const main = async() => {
         images:'https://imgur.com/SIwSh1f',
         description:'Doin ma thang',
         street:'Northen Blvd.',
-        croosStreet:'43th St.',
+        cross_street:'43th St.',
         filter:''
      });
 
@@ -70,7 +70,7 @@ const main = async() => {
         images:'https://imgur.com/jW9MrzQ',
         description:'Doing ya thang',
         street:'Southern Blvd.',
-        croosStreet:'87th st.',
+        cross_street:'87th st.',
         filter:''
      });
 
