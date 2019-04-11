@@ -27,7 +27,6 @@ const PORT = process.env.PORT || 3001
 
 
 //GET THE MAIN/ FEED PAGE
-
 app.get('/', async (req, res) => {
     try {
         const photos = await Photos.findAll({ raw: true })
@@ -41,9 +40,8 @@ app.get('/', async (req, res) => {
     }
 })
 
-
+//USERS SECTION
 // GET /users
-
 app.get('/user/:username', async (req, res) => {
     try {
         const username = req.params.username
@@ -60,15 +58,13 @@ app.get('/user/:username', async (req, res) => {
     }
 })
 
-
 // PUT /users
-
 app.put('/user/:username', async (req, res) => {
     try {
         const username = req.params.username
         const updateUser = {
           username: req.body.name,
-          email: req.body.email
+          email: req.body.email,
         };
         const userPut = await Users.update(updateUser, { where: { username: username } })
         res.json(userPut)
@@ -76,23 +72,41 @@ app.put('/user/:username', async (req, res) => {
         console.error(e)
         res.status(500).json({message: e.message})
       }
-    
 })
 
+// CREATE /users
+app.post('/user/:username', async (req, res) => {
+    console.log(req.body)
+    try {
+      const createUser = await Users.create(req.body)
+      res.json(createUser)
+    } catch(e) {
+      console.error(e)
+      res.status(500).json({message: e.message})
+    }
+  })
+
+// DELETE /users
+  app.delete('/user/:username', async (req, res) => {
+    try {
+      const username = req.params.username;
+      const deleteUser = await Users.destroy({ where: {username: username} });
+      res.json(deleteUser);
+    } catch (e) {
+      console.error(e);
+      res.status(500).json({ message: e.message});
+    }
+  });
 
 
 
 
-
-
-
+//COMMENTS SECTION
 // GET /comments
 
 app.get('/comments/:photo_id', async (req, res) => {
     try {
         const commentedOn = req.params.photo_id
-        //NOT 100% SURE NEED (or CAN USE) LINE DIRECTLY ABOVE
-
         const comments = await Comments.findAll({ where: { photo_id: commentedOn } })
         res.json({
             comments
@@ -108,8 +122,8 @@ app.get('/comments/:photo_id', async (req, res) => {
 
 app.get('/profiles/:user_id', async (req, res) => {
     try {
-        const userProfile = req.params.user_id
-        const profile = await Profiles.findAll({ where: { user_id: userProfile } })
+        const requestProfile = req.params.user_id
+        const profile = await Profiles.findAll({ where: { user_id: requestProfile } })
         res.json({
             profile
         })
@@ -124,19 +138,18 @@ app.get('/profiles/:user_id', async (req, res) => {
 
 app.put('/profiles/:user_id', async (req, res) => {
     try {
-        //STOPPED HERE 6:44
-        const username = req.params.username
-        const updateUser = {
-          username: req.body.name,
-          email: req.body.email
+        const putUsername = req.params.user_id
+        const updateProfile = {
+          profileDesc: req.body.name,
+          contact: req.body.contact,
+          nextPeform: req.body.nextPeform
         };
-        const userPut = await Users.update(updateUser, { where: { username: username } })
-        res.json(userPut)
+        const profilePut = await Profiles.update(updateProfile, { where: { username: putUsername } })
+        res.json(profilePut)
       } catch(e) {
         console.error(e)
         res.status(500).json({message: e.message})
       }
-    
 })
 
 
