@@ -208,13 +208,36 @@ app.put('/profiles/:user_id', async (req, res) => {
           contact: req.body.contact,
           nextPeform: req.body.nextPeform
         };
-        const profilePut = await Profiles.update(updateProfile, { where: { username: profileId } })
+        const profilePut = await Profiles.update(updateProfile, { where: { user_id: profileId } })
         res.json(profilePut)
       } catch(e) {
         console.error(e)
         res.status(500).json({message: e.message})
       }
 })
+
+// CREATE /profile
+app.post('/profiles/:user_id', async (req, res) => {
+    try {
+      const createProfile = await Profiles.create(req.body)
+      res.json(createProfile)
+    } catch(e) {
+      console.error(e)
+      res.status(500).json({message: e.message})
+    }
+  })
+
+// DELETE /profile
+  app.delete('/profiles/:user_id', async (req, res) => {
+    try {
+      const profileId = req.params.user_id;
+      const deleteProfile = await Profiles.destroy({ where: { user_id: profileId } });
+      res.json(deleteProfile);
+    } catch (e) {
+      console.error(e);
+      res.status(500).json({ message: e.message});
+    }
+  });
 
 
 // In production, any request that doesn't match a previous route
