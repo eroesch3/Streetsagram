@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Switch, Link, Route } from 'react-router-dom'
+import ImageUploader from 'react-images-upload';
 /* import components here */
 
 /* global variables here */
