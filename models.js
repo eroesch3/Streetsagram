@@ -16,13 +16,13 @@ const Users = db.define('users', {
     id: {
         primaryKey: true,
         type: Sequelize.INTEGER,
-        allowNull: false,
+        // allowNull: false,
         field: 'id'
     },
     username: {
         type: Sequelize.STRING(20),
-        allowNull: false,
-        notEmpty: true,
+        // allowNull: false,
+        // nots: true,
         field: 'username',
         set: function(val) {
             this.setDataValue('username', val.toLowerCase())
@@ -30,10 +30,10 @@ const Users = db.define('users', {
     },    
     email: {
         type: Sequelize.STRING,
-        allowNull: false,
+        // allowNull: false,
         unique: true,
         isEmail: true, 
-        notEmpty: true,
+        // notEmpty: true,
         field: 'email',
         set: function(val) {
             this.setDataValue('email', val.toLowerCase())
@@ -48,18 +48,18 @@ const Photos = db.define('photos', {
     id: {
       primaryKey: true,
       type: Sequelize.INTEGER,
-      allowNull: false,
+    //   allowNull: false,
       field: 'id'
     },
     user_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        // allowNull: false,
         field: 'user id'
     },    
     image: {
         type: Sequelize.STRING,
-        allowNull: false,
-        notEmpty: true,
+        // allowNull: false,
+        // notEmpty: true,
         field: 'images'
     },    
     description: {
@@ -86,20 +86,20 @@ const Comments = db.define('comments', {
     id: {
         primaryKey: true,
         type: Sequelize.INTEGER,
-        allowNull: false,
-        notEmpty: true,
+        // allowNull: false,
+        // notEmpty: true,
         field: 'id'
       },
     photo_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        notEmpty: true,
+        // allowNull: false,
+        // notEmpty: true,
         field: 'photo id'
     },
     user_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        notEmpty: true,
+        // allowNull: false,
+        // notEmpty: true,
         field: 'user id'
     },
     comment: {
@@ -114,14 +114,14 @@ const Profiles = db.define('profiles', {
     id: {
         primaryKey: true,
         type: Sequelize.INTEGER,
-        allowNull: false,
-        notEmpty: true,
+        // allowNull: false,
+        // notEmpty: true,
         field: 'id'
       },
     user_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        notEmpty: true,
+        // allowNull: false,
+        // notEmpty: true,
         field: 'user id'
     },
     profile_desc: {
