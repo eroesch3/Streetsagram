@@ -50,7 +50,7 @@ const Photos = db.define('photos', {
         allowNull: false,
         field: 'user id'
     },    
-    images: {
+    image: {
         type: Sequelize.STRING,
         allowNull: false,
         notEmpty: true,
@@ -67,6 +67,10 @@ const Photos = db.define('photos', {
     cross_street: {
         type: Sequelize.STRING,
         field: 'cross street'
+    },
+    filter: {
+        type: Sequelize.STRING,
+        field: filter,
     },
     timestamps: false,
 })
@@ -98,6 +102,32 @@ const Comments = db.define('comments', {
     timestamps: false,
 })
 
+//Define Profiles model
+const Profiles = db.define('profiles', {
+    id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        notEmpty: true,
+        field: 'id'
+      },
+    user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        notEmpty: true,
+        field: 'user id'
+    },
+    profile_desc: {
+        type: Sequelize.STRING,
+        field: 'profile description'
+    },
+    contact: {
+        type: Sequelize.STRING,
+        field: 'contact info',
+        next_perform: Sequelize.STRING,
+    },
+    timestamps: false,
+})
+
 
 // associations
 
@@ -110,6 +140,7 @@ Comments.belongsTo(Photos)
 Photos.belongsTo(Users)
 Photos.hasMany(Comments, {onDelete: 'cascade'}) //Delete photo, delete comments
 
+Profiles.belongsTo(Users)
 
 
 
