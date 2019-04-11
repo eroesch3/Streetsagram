@@ -22,13 +22,13 @@ const main = async() => {
 
     const user1 = await Users.create({
         username:'ComTruise',
-        email:'a@a',
+        email:'a@a.com',
         token:''
     });
 
     const user2 = await Users.create({
         username:'bubbagurl',
-        email:'b@b',
+        email:'b@b.com',
         token:''
     });
 
