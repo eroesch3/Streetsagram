@@ -40,7 +40,7 @@ app.get('/', async (req, res) => {
     }
 })
 
-//USERS SECTION
+//USERS SECTION (get, put, create, delete)
 // GET /users
 app.get('/user/:username', async (req, res) => {
     try {
@@ -99,11 +99,8 @@ app.post('/user/:username', async (req, res) => {
   });
 
 
-
-
-//COMMENTS SECTION
+//COMMENTS SECTION (get, create, delete)
 // GET /comments
-
 app.get('/comments/:photo_id', async (req, res) => {
     try {
         const commentedOn = req.params.photo_id
@@ -118,14 +115,82 @@ app.get('/comments/:photo_id', async (req, res) => {
     }
 })
 
-// GET /profiles
+// CREATE /comments
+app.post('/comments/:photo_id', async (req, res) => {
+    try {
+      const addComment = await Comments.create(req.body)
+      res.json(addComment)
+    } catch(e) {
+      console.error(e)
+      res.status(500).json({message: e.message})
+    }
+  })
 
+// DELETE /comments
+app.delete('/comments/:photo_id', async (req, res) => {
+    try {
+      const uncommentPhoto = req.params.photo_id;
+      const deleteComment = await Comments.destroy({ where: { photo_id: uncommentPhoto } });
+      res.json(deleteComment);
+    } catch (e) {
+      console.error(e);
+      res.status(500).json({ message: e.message});
+    }
+  });
+
+
+//PHOTOS SECTION (put, create, delete) Get photos path is our main page; see above!
+// PUT /photo
+app.put('/photos/:username', async (req, res) => {
+    try {
+        const username = req.params.username
+        const updatePhoto = {
+          image: req.body.image,
+          description: req.body.description,
+          street: req.body.street,
+          crossStreet: req.body.crossStreet,
+          filter: req.body.filter
+        };
+        const photoPut = await Photos.update(updatePhoto, { where: { username: username } })
+        res.json(photoPut)
+      } catch(e) {
+        console.error(e)
+        res.status(500).json({message: e.message})
+      }
+})
+
+// CREATE /photo
+app.post('/photos/:username', async (req, res) => {
+    try {
+      const createPhoto = await Photos.create(req.body)
+      res.json(createPhoto)
+    } catch(e) {
+      console.error(e)
+      res.status(500).json({message: e.message})
+    }
+  })
+
+// DELETE /photo
+  app.delete('/photos/:username', async (req, res) => {
+    try {
+      const username = req.params.username;
+      const deletePhoto = await Photos.destroy({ where: {username: username} });
+      res.json(deletePhoto);
+    } catch (e) {
+      console.error(e);
+      res.status(500).json({ message: e.message});
+    }
+  });
+
+
+//PROFILES SECTION (get, put, create, delete)
+// GET /profile
 app.get('/profiles/:user_id', async (req, res) => {
     try {
-        const requestProfile = req.params.user_id
-        const profile = await Profiles.findAll({ where: { user_id: requestProfile } })
+        const profileId = req.params.user_id
+        const requestedProfile = await Profiles.findAll({ where: { user_id: profileId } })
         res.json({
-            profile
+            requestedProfile
         })
     } catch (e) {
         res.status(500).json({
@@ -135,16 +200,15 @@ app.get('/profiles/:user_id', async (req, res) => {
 })
 
 // PUT /profiles
-
 app.put('/profiles/:user_id', async (req, res) => {
     try {
-        const putUsername = req.params.user_id
+        const profileId = req.params.user_id
         const updateProfile = {
           profileDesc: req.body.name,
           contact: req.body.contact,
           nextPeform: req.body.nextPeform
         };
-        const profilePut = await Profiles.update(updateProfile, { where: { username: putUsername } })
+        const profilePut = await Profiles.update(updateProfile, { where: { username: profileId } })
         res.json(profilePut)
       } catch(e) {
         console.error(e)
@@ -153,81 +217,14 @@ app.put('/profiles/:user_id', async (req, res) => {
 })
 
 
-
-
-
-// GET buildings/1
-app.get('/buildings/:id', async (req, res) => {
-    try {
-        const id = req.params.id;
-
-        const building = await Building.findByPk(id, { raw: true })
-        if (!building) throw Error('Building not found!')
-        res.json({ building })
-    } catch (e) {
-        res.status(500).json({
-            message: e.message
-        })
-    }
-})
-
-// POST /buildings
-app.post('/buildings', async (req, res) => {
-    console.log(req.body)
-    try {
-        const building = await Building.create(req.body)
-        res.json(building)
-    } catch (e) {
-        console.error(e)
-        res.status(500).json({ message: e.message })
-    }
-})
-
-// PUT /buildings/:id
-
-app.put('/buildings/:id', async (req, res) => {
-    try {
-        const id = req.params.id
-        const updateBuilding = {
-            name: req.body.name,
-            year_built: req.body.year_built,
-            image: req.body.image,
-            city: req.body.city
-        };
-        const building = await Building.update(updateBuilding, { where: { id: id } })
-        res.json(building)
-    } catch (e) {
-        console.error(e)
-        res.status(500).json({ message: e.message })
-    }
-})
-
-// DELETE /buildings/:id
-
-app.delete('/buildings/:id', async (req, res) => {
-    try {
-        const id = req.params.id;
-        console.log(id);
-
-        const building = await Building.destroy({ where: { id: id } });
-        res.json(building);
-    } catch (e) {
-        console.error(e);
-        res.status(500).json({ message: e.message });
-    }
-});
-
 // In production, any request that doesn't match a previous route
 // should send the front-end application, which will handle the route.
-if (process.env.NODE_ENV == "production") {
-    app.get("/*", function (request, response) {
+// if (process.env.NODE_ENV == "production") {
+
+// Note: the buildings app used line above to check if in production.... I thought better to use the redirect to main page in dev and production
+app.get("/*", function (request, response) {
         response.sendFile(path.join(__dirname, "build", "index.html"));
     });
-}
-
-
-
-
 
 
 
