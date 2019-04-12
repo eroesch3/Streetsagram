@@ -42,12 +42,12 @@ app.get('/', async (req, res) => {
 
 //USERS SECTION (get, put, create, delete)
 // GET /users
-app.get('/user/:username', async (req, res) => {
+app.get('/user/:id', async (req, res) => {
     try {
-        const username = req.params.username
+        const userId = req.params.id
         //NOT 100% SURE NEED (or CAN USE) LINE DIRECTLY ABOVE
 
-        const userGet = await Users.findAll({ where: { username: username } })
+        const userGet = await Users.findByPk(userId, {raw:true})
         res.json({
             userGet
         })
@@ -59,14 +59,14 @@ app.get('/user/:username', async (req, res) => {
 })
 
 // PUT /users
-app.put('/user/:username', async (req, res) => {
+app.put('/user/:id', async (req, res) => {
     try {
-        const username = req.params.username
-        const updateUser = {
+      const userId = req.params.id
+      const updateUser = {
           username: req.body.name,
           email: req.body.email,
         };
-        const userPut = await Users.update(updateUser, { where: { username: username } })
+        const userPut = await Users.findByPk(userId, {raw:true})
         res.json(userPut)
       } catch(e) {
         console.error(e)
@@ -75,7 +75,7 @@ app.put('/user/:username', async (req, res) => {
 })
 
 // CREATE /users
-app.post('/user/:username', async (req, res) => {
+app.post('/user', async (req, res) => {
     console.log(req.body)
     try {
       const createUser = await Users.create(req.body)
@@ -87,10 +87,10 @@ app.post('/user/:username', async (req, res) => {
   })
 
 // DELETE /users
-  app.delete('/user/:username', async (req, res) => {
+  app.delete('/user/:id', async (req, res) => {
     try {
-      const username = req.params.username;
-      const deleteUser = await Users.destroy({ where: {username: username} });
+      const userId = req.params.id
+      const deleteUser = await Users.destroy({ where: {id: userId} });
       res.json(deleteUser);
     } catch (e) {
       console.error(e);
@@ -141,9 +141,9 @@ app.delete('/comments/:photo_id', async (req, res) => {
 
 //PHOTOS SECTION (put, create, delete) Get photos path is our main page; see above!
 // PUT /photo
-app.put('/photos/:username', async (req, res) => {
+app.put('/photos/:id', async (req, res) => {
     try {
-        const username = req.params.username
+        const photoId = req.params.id
         const updatePhoto = {
           image: req.body.image,
           description: req.body.description,
@@ -151,7 +151,7 @@ app.put('/photos/:username', async (req, res) => {
           cross_street: req.body.cross_street,
           filter: req.body.filter
         };
-        const photoPut = await Photos.update(updatePhoto, { where: { username: username } })
+        const photoPut = await Photos.update(updatePhoto, { where: { id: photoId } })
         res.json(photoPut)
       } catch(e) {
         console.error(e)
@@ -160,7 +160,7 @@ app.put('/photos/:username', async (req, res) => {
 })
 
 // CREATE /photo
-app.post('/photos/:username', async (req, res) => {
+app.post('/photos/:user_id', async (req, res) => {
     try {
       const createPhoto = await Photos.create(req.body)
       res.json(createPhoto)
@@ -171,10 +171,10 @@ app.post('/photos/:username', async (req, res) => {
   })
 
 // DELETE /photo
-  app.delete('/photos/:photo_id', async (req, res) => {
+  app.delete('/photos/:id', async (req, res) => {
     try {
-      const selectedPhoto = req.params.photo_id;
-      const deletePhoto = await Photos.destroy({ where: {photo_id: selectedPhoto} });
+      const selectedPhoto = req.params.id;
+      const deletePhoto = await Photos.destroy({ where: {id: selectedPhoto} });
       res.json(deletePhoto);
     } catch (e) {
       console.error(e);
