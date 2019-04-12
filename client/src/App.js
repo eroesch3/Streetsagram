@@ -3,6 +3,8 @@ import './App.css';
 import { Switch, Link, Route } from 'react-router-dom'
 import ImageUploader from 'react-images-upload';
 import Feed from './Components/Feed'
+import Form from './Components/uploadForm.js'
+
 /* import components here */
 
 /* global variables here */
@@ -22,12 +24,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className='Header'>Streetstagram home page test!</h1>
-
-          {/*create container div for routes
-          define 'switch'
-          */}
-
-          {/* route paths: use "buildings-app" assignment for model */}
+          <Form />
+          
       </div>
     );
   }
