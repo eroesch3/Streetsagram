@@ -15,23 +15,19 @@ class PictureUpload extends Component {
         e.preventDefault();
         const formData = new FormData();
         let photo = this.state.file[0]
-        let photoPost = formData.append('file', photo, photo.name)
-        await photoPost
+        formData.append('file', photo, photo.name)
         console.log('form data', formData)
         console.log('photo', photo)
-        console.log('photo post', photoPost)
-        //axios.post
-        // axios({
-        //     method: 'post',
-        //     url: 'http://localhost:9000/test-upload',
-        //     data: formData
-        // })
         
-        axios.post(`http://localhost:9000/test-upload`, photoPost, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        }).then(response=>{
+
+        fetch(`http://localhost:9000/test-upload`, {
+            method: 'POST',
+            body: formData,
+            // headers: {
+            //     'Content-Type': 'multipart/form-data',
+            // }
+        })
+        .then(response=>{
             console.log('response', response)
             //return fetch ?
         }).catch(error =>{

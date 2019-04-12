@@ -5,6 +5,7 @@ const fs = require('fs');
 const fileType = require('file-type');
 const bluebird = require('bluebird')
 const multiparty = require('multiparty')
+const cors = require('cors')
 require ('dotenv').config()
 
 AWS.config.update({
@@ -26,6 +27,8 @@ const uploadFile = (buffer, name, type) => {
     }
     return s3.upload(params).promise()
 }
+
+app.use(cors())
 
 app.post('/test-upload', (req, res) => {
     const form = new multiparty.Form()
