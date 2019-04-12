@@ -19,7 +19,7 @@ class PictureUpload extends Component {
         console.log('form data', formData)
         console.log('photo', photo)
         
-
+//https://thingproxy.freeboard.io/fetch/
         fetch(`http://localhost:9000/test-upload`, {
             method: 'POST',
             body: formData,
@@ -30,6 +30,7 @@ class PictureUpload extends Component {
         .then(response=>{
             console.log('response', response)
             //return fetch ?
+            //set URL
         }).catch(error =>{
             console.log('error catch', error)
         })
