@@ -5,6 +5,7 @@ const fs = require('fs');
 const fileType = require('file-type');
 const bluebird = require('bluebird')
 const multiparty = require('multiparty')
+require ('dotenv').config()
 
 AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -29,17 +30,17 @@ const uploadFile = (buffer, name, type) => {
 app.post('/test-upload', (req, res) => {
     const form = new multiparty.Form()
     form.parse(req, async (error, fields, files) =>{
-        if (e) throw new Error(e)
+        if (error) throw new Error(error)
         try {
             const path = files.file[0].path
             const buffer = fs.readFileSync(path)
             const type = fileType(buffer)
             const timestamp = Date.now().toString()
             const fileName = `bucketFolder/${timestamp}-lg`
-            const data = await uploadFile(bugger, fileName, type)
+            const data = await uploadFile(buffer, fileName, type)
             return res.status(200).send(data)
-        } catch (e) {
-            return Response.status(400).send(e)
+        } catch (error) {
+            return res.status(400).send(error)
         }
     })
 })
