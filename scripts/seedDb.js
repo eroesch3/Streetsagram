@@ -40,6 +40,7 @@ const main = async() => {
 
     const photo1 = await Photos.create({
        id: 1,
+       user_id: 1,
 //        image:'https://imgur.com/laB0X2v',
        image:'https://i.imgur.com/GRDJgn3.jpg',
        description:'Graffiti2',
@@ -50,6 +51,7 @@ const main = async() => {
 
     const photo2 = await Photos.create({
         id: 2,
+        user_id: 1,
 //         image:'https://imgur.com/rKnzY5O',
         image:'https://i.imgur.com/qbpqmYw.jpg',
         description:'Tun tun tunnel',
@@ -60,6 +62,7 @@ const main = async() => {
 
      const photo3 = await Photos.create({
          id: 3,
+         user_id: 2,
 //         image:'https://imgur.com/adQW7nt',
         image:'https://i.imgur.com/Ea6MQ9p.jpg',
         description:'Mad City',
@@ -70,6 +73,7 @@ const main = async() => {
 
      const photo4 = await Photos.create({
          id: 4,
+         user_id: 2,
 //         image:'https://imgur.com/SIwSh1f',
         image:'https://i.imgur.com/JhngWan.jpg',
         description:'Doin ma thang',
@@ -80,6 +84,7 @@ const main = async() => {
 
      const photo5 = await Photos.create({
          id: 5,
+         user_id: 1,
 //         image:'https://imgur.com/jW9MrzQ',
         image:'https://i.imgur.com/kgiwdpj.jpg',
         description:'Doing ya thang',
