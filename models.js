@@ -4,61 +4,67 @@ const Sequelize = require('sequelize');
 const db = new Sequelize({
   database: 'streetstagram_db',
   dialect:  'postgres',
+//   operatorsAliases: false,
+  define: { 
+    underscored: true
+  }
 });
 
 
 // Define Users model
 const Users = db.define('users', {
     id: {
+        primaryKey: true,
         type: Sequelize.INTEGER,
-        allowNull: false,
+        // allowNull: false,
         field: 'id'
     },
     username: {
         type: Sequelize.STRING(20),
-        allowNull: false,
-        notEmpty: true,
+        // allowNull: false,
+        // nots: true,
         field: 'username',
         set: function(val) {
             this.setDataValue('username', val.toLowerCase())
-        }
+        },
     },    
     email: {
         type: Sequelize.STRING,
-        allowNull: false,
+        // allowNull: false,
         unique: true,
         isEmail: true, 
-        notEmpty: true,
+        // notEmpty: true,
         field: 'email',
         set: function(val) {
             this.setDataValue('email', val.toLowerCase())
-        }
+        },
     },
     password_digest: Sequelize.STRING,
-    timestamps: false,
+    // timestamps: false
 })
 
 //Define Photos model
 const Photos = db.define('photos', {
     id: {
+      primaryKey: true,
       type: Sequelize.INTEGER,
-      allowNull: false,
+    //   allowNull: false,
       field: 'id'
     },
     user_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        // allowNull: false,
         field: 'user id'
     },    
     image: {
         type: Sequelize.STRING,
-        allowNull: false,
-        notEmpty: true,
-        field: 'images',
+        // allowNull: false,
+        // notEmpty: true,
+        field: 'images'
     },    
     description: {
         type: Sequelize.STRING,
-        field: 'description',
+        field: 'description'
     },
     street: {
         type: Sequelize.STRING,
@@ -70,50 +76,52 @@ const Photos = db.define('photos', {
     },
     filter: {
         type: Sequelize.STRING,
-        field: filter,
+        field: 'filter'
     },
-    timestamps: false,
+    // timestamps: false
 })
 
 //Define Comments model
 const Comments = db.define('comments', {
     id: {
+        primaryKey: true,
         type: Sequelize.INTEGER,
-        allowNull: false,
-        notEmpty: true,
+        // allowNull: false,
+        // notEmpty: true,
         field: 'id'
       },
     photo_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        notEmpty: true,
+        // allowNull: false,
+        // notEmpty: true,
         field: 'photo id'
     },
     user_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        notEmpty: true,
+        // allowNull: false,
+        // notEmpty: true,
         field: 'user id'
     },
     comment: {
         type: Sequelize.STRING,
-        field: 'comments',
+        field: 'comments'
     },
-    timestamps: false,
+    // timestamps: false
 })
 
 //Define Profiles model
 const Profiles = db.define('profiles', {
     id: {
+        primaryKey: true,
         type: Sequelize.INTEGER,
-        allowNull: false,
-        notEmpty: true,
+        // allowNull: false,
+        // notEmpty: true,
         field: 'id'
       },
     user_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        notEmpty: true,
+        // allowNull: false,
+        // notEmpty: true,
         field: 'user id'
     },
     profile_desc: {
@@ -125,7 +133,7 @@ const Profiles = db.define('profiles', {
         field: 'contact info',
         next_perform: Sequelize.STRING,
     },
-    timestamps: false,
+    // timestamps: false
 })
 
 
@@ -149,5 +157,5 @@ module.exports = {
   db,
   Users,
   Photos,
-  Comments,
+  Comments
 }
