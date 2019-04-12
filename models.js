@@ -39,8 +39,7 @@ const Users = db.define('users', {
             this.setDataValue('email', val.toLowerCase())
         },
     },
-    password_digest: Sequelize.STRING,
-    // timestamps: false
+    password_digest: Sequelize.STRING
 })
 
 //Define Photos model
@@ -77,8 +76,7 @@ const Photos = db.define('photos', {
     filter: {
         type: Sequelize.STRING,
         field: 'filter'
-    },
-    // timestamps: false
+    }
 })
 
 //Define Comments model
@@ -105,8 +103,7 @@ const Comments = db.define('comments', {
     comment: {
         type: Sequelize.STRING,
         field: 'comments'
-    },
-    // timestamps: false
+    }
 })
 
 //Define Profiles model
@@ -132,8 +129,7 @@ const Profiles = db.define('profiles', {
         type: Sequelize.STRING,
         field: 'contact info',
         next_perform: Sequelize.STRING,
-    },
-    // timestamps: false
+    }
 })
 
 
