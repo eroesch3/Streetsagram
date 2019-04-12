@@ -15,7 +15,7 @@ export class Nav extends Component {
         <h1 className='logo--navLogo-takeToHomePage'><Link to='/Feed'>Streetstagram</Link></h1>
             <ul className='navList--links--takeToDifferentComponents'>
                 <li className='list--link--takeToLogin'><Link to='/LogIn'>Login</Link></li>
-                <li className='list--link--takeToFeed'><Link to='/Feed'>Return To Feed</Link></li>
+                <li className='list--link--takeToFeed'><Link to='/Feed'>Feed</Link></li>
             </ul>
 
            

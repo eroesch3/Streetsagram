@@ -7,11 +7,15 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  background: lightblue;
+  border-radius: 6px;
 }
 
-.logo--navLogo-takeToHomePage{
+.logo--navLogo-takeToHomePage > a {
   display: flex;
   margin: 24px;
+  text-decoration: none;
+  
 
 }
 
@@ -19,5 +23,15 @@
   display: flex;
   list-style: none;
   margin: 24px;
+  
+  
 } 
- 
+.list--link--takeToLogin > a {
+  padding-right: 2em;
+  text-decoration: none;
+  
+}
+
+.list--link--takeToFeed > a {
+  text-decoration: none;
+} 
