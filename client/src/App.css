@@ -1,5 +1,10 @@
+/* @import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo'); */
+
+
 .App {
   text-align: center;
+  font-family: 'Nanum Myeongjo', serif;
+
 }
 
 .nav--mainNav--containAllLinks{
