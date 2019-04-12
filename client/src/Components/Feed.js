@@ -11,7 +11,7 @@ class Feed extends Component {
     }
     
     onDrop(picture) {
-        this.setState({pictures: this.state.pictures.concat(picture)})
+        this.setState({pictures: this.state.pictures.push(picture)})
     }
 
     render(){

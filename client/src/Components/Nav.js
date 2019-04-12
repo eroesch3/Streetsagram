@@ -1,4 +1,10 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+
+
+
+
+
 
 export class Nav extends Component {
   render() {
@@ -6,13 +12,13 @@ export class Nav extends Component {
       
 
       <div className='nav--mainNav--containAllLinks'>
-        <h1 className='logo--navLogo-takeToHomePage'><a href=''>Streetstagram</a></h1>
+        <h1 className='logo--navLogo-takeToHomePage'><Link to='/Feed'>Streetstagram</Link></h1>
             <ul className='navList--links--takeToDifferentComponents'>
-                <li><a href='/login'>Login</a></li>
-                <li><a href='/register'>Register</a></li>
-                <li><a href='/feed'>Return To Feed</a></li>
-
+                <li><Link to='/LogIn'>Login</Link></li>
+                <li><Link to='/Feed'>Return To Feed</Link></li>
             </ul>
+
+           
         
       </div>
     )
