@@ -15,7 +15,7 @@ const logger = require('morgan');
 app.use(logger('dev'));
 app.use(bodyParser.json())
 app.use(cors());
-// app.use("/", express.static("./streetsagram/"));
+// app.use("/", express.static("./streetstagram/"));
 //USE ABOVE LINE WHEN WE DEPLOYE !!!
 
 
@@ -141,17 +141,17 @@ app.delete('/comments/:photo_id', async (req, res) => {
 
 //PHOTOS SECTION (put, create, delete) Get photos path is our main page; see above!
 // PUT /photo
-app.put('/photos/:username', async (req, res) => {
+app.put('/photo/:id', async (req, res) => {
     try {
-        const username = req.params.username
+        const photoId = req.params.id
         const updatePhoto = {
           image: req.body.image,
           description: req.body.description,
           street: req.body.street,
           cross_street: req.body.cross_street,
-          filter: req.body.filter
+          filter: ''
         };
-        const photoPut = await Photos.update(updatePhoto, { where: { username: username } })
+        const photoPut = await Photos.update(updatePhoto, { where: { id: photoId } })
         res.json(photoPut)
       } catch(e) {
         console.error(e)
@@ -160,7 +160,7 @@ app.put('/photos/:username', async (req, res) => {
 })
 
 // CREATE /photo
-app.post('/photos/:username', async (req, res) => {
+app.post('/post', async (req, res) => {
     try {
       const createPhoto = await Photos.create(req.body)
       res.json(createPhoto)
@@ -171,10 +171,10 @@ app.post('/photos/:username', async (req, res) => {
   })
 
 // DELETE /photo
-  app.delete('/photos/:photo_id', async (req, res) => {
+  app.delete('/photo/:id', async (req, res) => {
     try {
-      const selectedPhoto = req.params.photo_id;
-      const deletePhoto = await Photos.destroy({ where: {photo_id: selectedPhoto} });
+      const selectedPhoto = req.params.id;
+      const deletePhoto = await Photos.destroy({ where: {id: selectedPhoto} });
       res.json(deletePhoto);
     } catch (e) {
       console.error(e);

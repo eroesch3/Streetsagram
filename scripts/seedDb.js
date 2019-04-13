@@ -23,14 +23,12 @@ const main = async() => {
     // Add seed here - users
 
     const user1 = await Users.create({
-        id: 1,
         username:'ComTruise',
         email:'a@a.com',
         token:''
     });
 
     const user2 = await Users.create({
-        id: 2,
         username:'bubbagurl',
         email:'b@b.com',
         token:''
@@ -39,8 +37,6 @@ const main = async() => {
     // Add seed here - photos
 
     const photo1 = await Photos.create({
-       id: 1,
-//        image:'https://imgur.com/laB0X2v',
        image:'https://i.imgur.com/GRDJgn3.jpg',
        description:'Graffiti2',
        street:'lafayette st.',
@@ -49,8 +45,6 @@ const main = async() => {
     });
 
     const photo2 = await Photos.create({
-        id: 2,
-//         image:'https://imgur.com/rKnzY5O',
         image:'https://i.imgur.com/qbpqmYw.jpg',
         description:'Tun tun tunnel',
         street:'Bedford St.',
@@ -59,8 +53,6 @@ const main = async() => {
      });
 
      const photo3 = await Photos.create({
-         id: 3,
-//         image:'https://imgur.com/adQW7nt',
         image:'https://i.imgur.com/Ea6MQ9p.jpg',
         description:'Mad City',
         street:'7th Ave.',
@@ -69,8 +61,6 @@ const main = async() => {
      });
 
      const photo4 = await Photos.create({
-         id: 4,
-//         image:'https://imgur.com/SIwSh1f',
         image:'https://i.imgur.com/JhngWan.jpg',
         description:'Doin ma thang',
         street:'Northen Blvd.',
@@ -79,8 +69,6 @@ const main = async() => {
      });
 
      const photo5 = await Photos.create({
-         id: 5,
-//         image:'https://imgur.com/jW9MrzQ',
         image:'https://i.imgur.com/kgiwdpj.jpg',
         description:'Doing ya thang',
         street:'Southern Blvd.',

@@ -4,6 +4,9 @@ import { Switch, Link, Route } from 'react-router-dom'
 import ImageUploader from 'react-images-upload';
 import Feed from './Components/Feed'
 import PictureUpload from './Components/PictureUpload'
+import Nav from './Components/Nav'
+import LogIn from './Components/LogIn'
+import Form from './Components/uploadForm.js'
 /* import components here */
 
 /* global variables here */
@@ -22,14 +25,26 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className='Header'>Streetstagram home page test!</h1>
+          <Nav />
+          <Form />
+
+
+          <Route 
+            path='/LogIn'
+            component={LogIn}
+          />  
+
+          <Route 
+            path='/Feed'
+            component={Feed}
+          /> 
 
           {/*create container div for routes
           define 'switch'
           */}
 
           <PictureUpload />
-
+          
           {/* route paths: use "buildings-app" assignment for model */}
       </div>
     );
