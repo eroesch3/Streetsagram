@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 
-const url='http://localhost:3001/photos/'
+const url='http://localhost:3001/post'
 
 export default class Form extends Component {
   constructor(props){
     super(props)
       this.state={
-        email: '',
         url: '',  
         description: '',  
         street: '',
@@ -37,9 +36,7 @@ export default class Form extends Component {
       'Content-Type': 'application/json'
     }
   })
-  // .then(response => response.json())
-  .then(res=>res.text())
-  .then(text=>console.log(text))
+  .then(response => response.json())
   
   this.setState({
     url: '',
