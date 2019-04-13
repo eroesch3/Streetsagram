@@ -38,8 +38,8 @@ const s3=new AWS.S3();
 app.use(logger('dev'));
 app.use(bodyParser.json())
 app.use(cors());
-// app.use("/", express.static("./streetstagram/"));
-//USE ABOVE LINE WHEN WE DEPLOYE !!!
+app.use("/", express.static("./build/"));
+//USE ABOVE LINE WHEN WE DEPLOY !!!
 
 //AWS upload file
 const uploadFile = (buffer, name, type) => {
