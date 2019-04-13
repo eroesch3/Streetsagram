@@ -53,17 +53,17 @@ app.post('/upload', (req, res) => {
     })
 });
 
-app.get('/list', async (req, res) => {
-    const params = {
-        Bucket: 'streetstagram-juniper',
-        MaxKeys: 1,
-    }
-    s3.listObjects(params, function(err, data){
-        if (err) console.log(err)
-        else console.log('data', data)
-    })
-    res.json({ msg: 'Express is running for awsServer, Streetstagram!' })
-  });
+// app.get('/list', async (req, res) => {
+//     const params = {
+//         Bucket: 'streetstagram-juniper',
+//         MaxKeys: 1,
+//     }
+//     s3.listObjects(params, function(err, data){
+//         if (err) console.log(err)
+//         else console.log('data', data)
+//     })
+//     res.json({ msg: 'Express is running for awsServer, Streetstagram!' })
+//   });
 
 app.listen(process.env.PORT || 3005);
 console.log(`SERVER UP!`)
