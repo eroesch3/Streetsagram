@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-const url='http://localhost:3001/photos/'
+const url='http://localhost:3001/post'
 
 export default class Form extends Component {
   constructor(props){

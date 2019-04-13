@@ -13,9 +13,9 @@ const Users = db.define('users', {
     username: {
         type: Sequelize.STRING(20),
         field: 'username',
-        set: function(val) {
-            this.setDataValue('username', val.toLowerCase())
-        },
+        // set: function(val) {
+        //     this.setDataValue('username', val.toLowerCase())
+        // },
     },    
     email: {
         type: Sequelize.STRING,
