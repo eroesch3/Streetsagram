@@ -18,14 +18,9 @@ class PictureUpload extends Component {
         formData.append('file', photo, photo.name)
         console.log('form data', formData)
         console.log('photo', photo)
-        
-//https://thingproxy.freeboard.io/fetch/
         fetch(`http://localhost:3005/upload`, {
             method: 'POST',
             body: formData,
-            // headers: {
-            //     'Content-Type': 'multipart/form-data',
-            // }
         })
         .then(response=>{
             console.log('response', response)
