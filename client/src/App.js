@@ -26,10 +26,9 @@ this.setPictureURL=this.setPictureURL.bind(this)
 /* write functions here */
 setPictureURL = async (url) =>{
   let photos = this.state.pictureURLS
-  console.log('url set picture', url)
   photos.push(url)
   this.setState({pictureURLS:photos})
-  console.log('state', this.state.pictureURLS)
+  console.log('state on new picture upload', this.state.pictureURLS)
 }
 
   render() {

@@ -26,16 +26,6 @@ class PictureUpload extends Component {
         }).catch(error=>{
             console.log(error)
         })
-
-        // fetch(`http://localhost:3005/upload`, {
-        //     method: 'POST',
-        //     body: formData,
-        // })
-        // .then(response=>{
-        //     this.props.setPictureURL(response.url)
-        // }).catch(error =>{
-        //     console.log('error catch', error)
-        // })
     }
 
     handleFileUpload = async (e) => {
