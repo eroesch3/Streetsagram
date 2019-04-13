@@ -35,7 +35,7 @@ setPictureURL = async (url) =>{
     return (
       <div className="App">
           <Nav />
-          <Form />
+          <Form setPictureURL={this.setPictureURL}/>
 
 
           <Route 
@@ -52,7 +52,7 @@ setPictureURL = async (url) =>{
           define 'switch'
           */}
 
-          <PictureUpload setPictureURL={this.setPictureURL}/>
+          {/* <PictureUpload setPictureURL={this.setPictureURL}/> */}
           
           {/* route paths: use "buildings-app" assignment for model */}
       </div>
