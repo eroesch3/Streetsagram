@@ -4,25 +4,14 @@ const Sequelize = require('sequelize');
 const db = new Sequelize({
   database: 'streetstagram_db',
   dialect:  'postgres',
-//   operatorsAliases: false,
-  define: { 
-    underscored: true
-  }
+  operatorsAliases: false,
 });
 
 
 // Define Users model
 const Users = db.define('users', {
-    id: {
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-        // allowNull: false,
-        field: 'id'
-    },
     username: {
         type: Sequelize.STRING(20),
-        // allowNull: false,
-        // nots: true,
         field: 'username',
         set: function(val) {
             this.setDataValue('username', val.toLowerCase())
@@ -43,18 +32,7 @@ const Users = db.define('users', {
 })
 
 //Define Photos model
-const Photos = db.define('photos', {
-    id: {
-      primaryKey: true,
-      type: Sequelize.INTEGER,
-    //   allowNull: false,
-      field: 'id'
-    },
-    user_id: {
-        type: Sequelize.INTEGER,
-        // allowNull: false,
-        field: 'user id'
-    },    
+const Photos = db.define('photos', {   
     image: {
         type: Sequelize.STRING,
         // allowNull: false,
@@ -81,25 +59,6 @@ const Photos = db.define('photos', {
 
 //Define Comments model
 const Comments = db.define('comments', {
-    id: {
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-        // allowNull: false,
-        // notEmpty: true,
-        field: 'id'
-      },
-    photo_id: {
-        type: Sequelize.INTEGER,
-        // allowNull: false,
-        // notEmpty: true,
-        field: 'photo id'
-    },
-    user_id: {
-        type: Sequelize.INTEGER,
-        // allowNull: false,
-        // notEmpty: true,
-        field: 'user id'
-    },
     comment: {
         type: Sequelize.STRING,
         field: 'comments'
@@ -108,19 +67,6 @@ const Comments = db.define('comments', {
 
 //Define Profiles model
 const Profiles = db.define('profiles', {
-    id: {
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-        // allowNull: false,
-        // notEmpty: true,
-        field: 'id'
-      },
-    user_id: {
-        type: Sequelize.INTEGER,
-        // allowNull: false,
-        // notEmpty: true,
-        field: 'user id'
-    },
     profile_desc: {
         type: Sequelize.STRING,
         field: 'profile description'
