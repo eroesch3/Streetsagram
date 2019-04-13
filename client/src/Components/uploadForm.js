@@ -34,7 +34,7 @@ export default class Form extends Component {
   const formData = new FormData();
   let photo = this.state.file[0]
   formData.append('file', photo, photo.name)
-  await axios.post(`http://localhost:3005/upload`, formData, {
+  await axios.post(`http://localhost:3001/upload`, formData, {
       headers: {
           'Content-Type': 'multipart/form-data'
       }
