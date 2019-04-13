@@ -16,15 +16,26 @@ class PictureUpload extends Component {
         const formData = new FormData();
         let photo = this.state.file[0]
         formData.append('file', photo, photo.name)
-        fetch(`http://localhost:3005/upload`, {
-            method: 'POST',
-            body: formData,
+        axios.post(`http://localhost:3005/upload`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then(response=>{
+            console.log(response.data)
+            this.props.setPictureURL(response.data.Location)
+        }).catch(error=>{
+            console.log(error)
         })
-        .then(response=>{
-            this.props.setPictureURL(response.url)
-        }).catch(error =>{
-            console.log('error catch', error)
-        })
+
+        // fetch(`http://localhost:3005/upload`, {
+        //     method: 'POST',
+        //     body: formData,
+        // })
+        // .then(response=>{
+        //     this.props.setPictureURL(response.url)
+        // }).catch(error =>{
+        //     console.log('error catch', error)
+        // })
     }
 
     handleFileUpload = async (e) => {
