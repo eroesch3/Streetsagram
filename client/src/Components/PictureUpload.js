@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import axios from 'axios'
 
 class PictureUpload extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state ={
             file: null
         }
@@ -16,16 +16,12 @@ class PictureUpload extends Component {
         const formData = new FormData();
         let photo = this.state.file[0]
         formData.append('file', photo, photo.name)
-        console.log('form data', formData)
-        console.log('photo', photo)
         fetch(`http://localhost:3005/upload`, {
             method: 'POST',
             body: formData,
         })
         .then(response=>{
-            console.log('response', response)
-            //return fetch ?
-            //set URL
+            this.props.setPictureURL(response.url)
         }).catch(error =>{
             console.log('error catch', error)
         })

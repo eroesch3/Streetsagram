@@ -7,6 +7,7 @@ import PictureUpload from './Components/PictureUpload'
 import Nav from './Components/Nav'
 import LogIn from './Components/LogIn'
 import Form from './Components/uploadForm.js'
+
 /* import components here */
 
 /* global variables here */
@@ -16,11 +17,20 @@ class App extends Component {
     super(props)
     this.state={
 /*set state here */
+      pictureURLS: []
     }
 /*bind functions here */
+this.setPictureURL=this.setPictureURL.bind(this)
   }
 
 /* write functions here */
+setPictureURL = async (url) =>{
+  let photos = this.state.pictureURLS
+  console.log('url set picture', url)
+  photos.push(url)
+  this.setState({pictureURLS:photos})
+  console.log('state', this.state.pictureURLS)
+}
 
   render() {
     return (
@@ -43,7 +53,7 @@ class App extends Component {
           define 'switch'
           */}
 
-          <PictureUpload />
+          <PictureUpload setPictureURL={this.setPictureURL}/>
           
           {/* route paths: use "buildings-app" assignment for model */}
       </div>
