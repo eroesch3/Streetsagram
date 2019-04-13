@@ -1,122 +1,24 @@
 import React, { Component } from 'react'
-import {Route, Link} from 'react-router-dom'
 
-class Label extends React.Component {
-  render() {
-    if (this.props.hasLabel === 'true') {
-      return <label 
-        htmlFor={this.props.htmlFor}>
-        {this.props.label}
-      </label>
-    }
-  }
-}
-
-class Button extends Component {
-  render() {
-    return (
-      <fieldset>
-        <button
-          type={this.props.type || 'button'}
-          value={this.props.value || null}
-        >
-          {this.props.text}
-        </button>
-      </fieldset>
-    );
-  }
-};
-
-class Input extends Component {
-  render() {
-    return (
-      <fieldset>
-        <Label
-          hasLabel={this.props.hasLabel}
-          htmlFor={this.props.htmlFor}
-          label={this.props.label}
-        />
-        <br />
-        <input
-          id={this.props.htmlFor}
-          name={this.props.name || null}
-          placeholder={this.props.placeholder || null}
-          type={this.props.type || 'text'}
-        />
-      </fieldset>
-    );
-  }
-}
-
-class Textarea extends Component {
-  render() {
-    return (
-      <fieldset>
-        <Label
-          hasLabel={this.props.hasLabel}
-          htmlFor={this.props.htmlFor}
-          label={this.props.label}
-        />
-        <br />
-        <textarea
-          id={this.props.htmlFor}
-          name={this.props.name || null}
-        >
-        </textarea>
-      </fieldset>
-    );
-  }
-};
-
-class Street extends Component {
-  render() {
-    return (
-      <fieldset>
-        <Label
-          hasLabel={this.props.hasLabel}
-          htmlFor={this.props.htmlFor}
-          label={this.props.label}
-        />
-        <br />
-        <textarea
-          id={this.props.htmlFor}
-          name={this.props.name || null}
-        >
-        </textarea>
-      </fieldset>
-    );
-  }
-};
-
-class CrossStreet extends Component {
-  render() {
-    return (
-      <div>
-        <Label
-          hasLabel={this.props.hasLabel}
-          htmlFor={this.props.htmlFor}
-          label={this.props.label}
-        />
-        <br />
-        <textarea
-          id={this.props.htmlFor}
-          name={this.props.name || null}
-        >
-        </textarea>
-      </div>
-    );
-  }
-};
+const url='http://localhost:3001/photos/'
 
 export default class Form extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
       this.state={
-        url: '',
-        description:'',
+        email: '',
+        url: '',  
+        description: '',  
         street: '',
-        cross_street: ''
+        cross_street: ''  
       }
+  }
+  
+  onFormChange=event=>{
+    const{name,value}=event.target
+    this.setState({
+      [name]:value
+    })
   }
 
 onFormSubmit=event=>{
@@ -127,16 +29,17 @@ onFormSubmit=event=>{
     street: this.state.street,
     cross_street: this.state.cross_street
   }
-  fetch('http://localhost:3000/photos/:user_id', {
+  fetch(url, {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
       'Content-Type': 'application/json'
     }
   })
-  .then(response=>{
-    return response.json()
-  })
+  // .then(response => response.json())
+  .then(res=>res.text())
+  .then(text=>console.log(text))
+  
   this.setState({
     url: '',
     description:'',
@@ -145,50 +48,62 @@ onFormSubmit=event=>{
   })
 }
 
-  changeHandler = event => {
-    this.setState({
-      url: event.target.value
-    })
-  }
-
   render() {
     return (
-      <form method='' action=''>
-        <Input
-          hasLabel='true'
-          htmlFor='photourl'
-          label='Photo Url '
-          required='true'
-          type='url'
-        />
-
-        <Textarea
-          hasLabel='true'
-          htmlFor='textarea'
-          label='Photo Description ' 
-          required='true'
-          type='string'
-        />
-
-        <Street 
-          hasLabel='true'
-          htmlFor='street'
-          label='Street Location'
-          type='string'
-        />
-
-        <CrossStreet
-          hasLabel='true'
-          htmlFor='crossstreet'
-          label='Photo Cross-Street location'
-          type='string' 
-        />   
+      <form onSubmit={this.onFormSubmit}>
         
-        <Button
-          type='submit'
-          value='submit'
-          text='Submit Photo'
-        />
+        <div className='uploadform--uploadform--url'>
+          <label htmlFor='url'>Photo Url</label>
+          <br />
+          <input
+            name='url'
+            type='url'
+            value={this.state.value}
+            onChange={this.onFormChange}
+          />
+        </div>
+
+        <div className='uploadform--uploadform--description'>
+          <label htmlFor='description'>Photo Description</label>
+          <br />
+          <input
+            name='description'
+            type='string'
+            value={this.state.value}
+            onChange={this.onFormChange}
+          />
+        </div>  
+
+        <div className='uploadform--uploadform--street'>        
+          <label htmlFor='street'>Street</label>
+          <br />
+          <input
+            name='street'
+            type='string'
+            value={this.state.value}
+            onChange={this.onFormChange}
+          />
+        </div>  
+
+        <div className='uploadform--uploadform--crossstreet'>
+          <label htmlFor='cross_street'>Cross Street</label>
+          <br />
+          <input
+            name='cross_street'
+            type='string'
+            value={this.state.value}
+            onChange={this.onFormChange}
+          />
+        </div>  
+          
+        <div className='uploadform--uploadform--button'>
+          <button
+            type='submit'
+            value='submit'
+            text='Submit Photo'
+          />
+        </div>  
+
       </form>
     )
   }
