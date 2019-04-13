@@ -4,10 +4,10 @@ const Sequelize = require('sequelize');
 const db = new Sequelize({
   database: 'streetstagram_db',
   dialect:  'postgres',
-//   operatorsAliases: false,
-  define: { 
-    underscored: true
-  }
+  operatorsAliases: false,
+//   define: { 
+//     underscored: true
+//   }
 });
 
 
