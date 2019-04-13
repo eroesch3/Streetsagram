@@ -5,6 +5,27 @@ const path = require('path');
 //BELOW THIS LINE ARE BOILERS NOT USED IN Buildings app server
 const cors = require('cors');
 const logger = require('morgan');
+//AWS stuff:
+const AWS = require('aws-sdk');
+const fs = require('fs');
+const fileType = require('file-type');
+const bluebird = require('bluebird');
+const multiparty = require('multiparty');
+require ('dotenv').config();
+
+
+//AWS password/config:
+AWS.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: 'us-east-2'
+});
+
+AWS.config.setPromisesDependency(bluebird);
+
+const s3=new AWS.S3();
+
+
 
 // const usersRouter = require('./routes/users');
 // const tweetsRouter = require('./routes/tweets');
@@ -12,12 +33,44 @@ const logger = require('morgan');
 // app.use('/users', usersRouter);
 // app.use('/tweets', tweetsRouter);
 
+
+//we need to app.use logger, bodyparser, and cors for AWS
 app.use(logger('dev'));
 app.use(bodyParser.json())
 app.use(cors());
 // app.use("/", express.static("./streetstagram/"));
 //USE ABOVE LINE WHEN WE DEPLOYE !!!
 
+//AWS upload file
+const uploadFile = (buffer, name, type) => {
+  const params = {
+      ACL: 'public-read',
+      Body: buffer,
+      Bucket: process.env.S3_BUCKET,
+      ContentType: type.mime,
+      Key: `${name}.${type.ext}`
+  }
+  return s3.upload(params).promise()
+};
+
+//AWS post route
+app.post('/upload', (req, res) => {
+  const form = new multiparty.Form()
+  form.parse(req, async (error, fields, files) =>{
+      if (error) throw new Error(error)
+      try {
+          const path = files.file[0].path
+          const buffer = fs.readFileSync(path)
+          const type = fileType(buffer)
+          const timestamp = Date.now().toString()
+          const fileName = `bucketFolder/${timestamp}-lg`
+          const data = await uploadFile(buffer, fileName, type)
+          return res.status(200).send(data)
+      } catch (error) {
+          return res.status(400).send(error)
+      }
+  })
+});
 
 
 // import models
