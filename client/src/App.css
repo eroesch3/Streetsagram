@@ -1,3 +1,42 @@
+/* @import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo'); */
+
+
 .App {
   text-align: center;
+  font-family: 'Nanum Myeongjo', serif;
+
 }
+
+.nav--mainNav--containAllLinks{
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  background: lightblue;
+  border-radius: 6px;
+}
+
+.logo--navLogo-takeToHomePage > a {
+  display: flex;
+  margin: 24px;
+  text-decoration: none;
+  
+
+}
+
+.navList--links--takeToDifferentComponents{
+  display: flex;
+  list-style: none;
+  margin: 24px;
+  
+  
+} 
+.list--link--takeToLogin > a {
+  padding-right: 2em;
+  text-decoration: none;
+  
+}
+
+.list--link--takeToFeed > a {
+  text-decoration: none;
+} 

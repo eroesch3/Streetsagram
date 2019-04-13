@@ -160,7 +160,7 @@ app.put('/photos/:id', async (req, res) => {
 })
 
 // CREATE /photo
-app.post('/photos/:user_id', async (req, res) => {
+app.post('/photos', async (req, res) => {
     try {
       const createPhoto = await Photos.create(req.body)
       res.json(createPhoto)
