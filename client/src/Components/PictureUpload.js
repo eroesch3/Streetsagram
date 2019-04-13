@@ -5,7 +5,7 @@ class PictureUpload extends Component {
     constructor(){
         super()
         this.state ={
-            file: ''
+            file: null
         }
     this.submitFile=this.submitFile.bind(this)
     this.handleFileUpload=this.handleFileUpload.bind(this)
@@ -20,7 +20,7 @@ class PictureUpload extends Component {
         console.log('photo', photo)
         
 //https://thingproxy.freeboard.io/fetch/
-        fetch(`http://localhost:9000/test-upload`, {
+        fetch(`http://localhost:3005/upload`, {
             method: 'POST',
             body: formData,
             // headers: {
