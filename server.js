@@ -149,7 +149,7 @@ app.put('/photo/:id', async (req, res) => {
           description: req.body.description,
           street: req.body.street,
           cross_street: req.body.cross_street,
-          filter: req.body.filter
+          filter: ''
         };
         const photoPut = await Photos.update(updatePhoto, { where: { id: photoId } })
         res.json(photoPut)

@@ -5,9 +5,6 @@ const db = new Sequelize({
   database: 'streetstagram_db',
   dialect:  'postgres',
   operatorsAliases: false,
-//   define: { 
-//     underscored: true
-//   }
 });
 
 
@@ -15,8 +12,6 @@ const db = new Sequelize({
 const Users = db.define('users', {
     username: {
         type: Sequelize.STRING(20),
-        // allowNull: false,
-        // nots: true,
         field: 'username',
         set: function(val) {
             this.setDataValue('username', val.toLowerCase())
