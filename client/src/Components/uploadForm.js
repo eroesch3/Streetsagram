@@ -21,14 +21,15 @@ export default class Form extends Component {
     })
   }
 
-onFormSubmit=event=>{
-  event.preventDefault()
-  let data = {
-    url: this.state.url,
-    description: this.state.description,
-    street: this.state.street,
-    cross_street: this.state.cross_street
+  onFormSubmit=event=>{
+    event.preventDefault()
+    let data = {
+      url: this.state.url,
+      description: this.state.description,
+      street: this.state.street,
+      cross_street: this.state.cross_street
   }
+
   fetch(url, {
     method: 'POST',
     body: JSON.stringify(data),
@@ -100,8 +101,8 @@ onFormSubmit=event=>{
           <button
             type='submit'
             value='submit'
-            text='Submit Photo'
-          />
+            text='Submit Photo'>
+            Submit Photo</button>
         </div>  
 
       </form>
