@@ -19,7 +19,7 @@ class PhotosFeed extends Component {
         const {photos} = this.props
         return photos.map((photo)=>
           <div className='photoStream--photoContain' key = {photo.id}>
-            <img src={photo.image}/>
+            <img className='photoStream--photoContain--photo' src={photo.image}/>
             <div className='photoStream--photoContain--photoDetails'>
               <div className='photoStream--photoContain--photoDetails--description'>Description: {photo.description}</div>
               <div className='photoStream--photoContain--photoDetails--street'>Street: {photo.street}</div>
