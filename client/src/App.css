@@ -40,3 +40,31 @@
 .list--link--takeToFeed > a {
   text-decoration: none;
 } 
+.photoStream{
+  width: 60%;
+  margin: 0 20% 0 20%;
+  background-color: lightgray;
+  padding-top: 10px;
+}
+.photoStream--photoContain{
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 350px;
+  margin: 20px auto;
+}
+.photoStream--photoContain--photo{
+  display: flex;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid black;
+}
+.photoStream--photoContain--photoDetails{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+}

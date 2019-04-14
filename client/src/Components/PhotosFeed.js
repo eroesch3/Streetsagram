@@ -21,9 +21,9 @@ class PhotosFeed extends Component {
           <div className='photoStream--photoContain' key = {photo.id}>
             <img className='photoStream--photoContain--photo' src={photo.image}/>
             <div className='photoStream--photoContain--photoDetails'>
-              <div className='photoStream--photoContain--photoDetails--description'>Description: {photo.description}</div>
-              <div className='photoStream--photoContain--photoDetails--street'>Street: {photo.street}</div>
-              <div className='photoStream--photoContain--photoDetails--cross_street'>Cross Street: {photo.cross_street}</div>
+              <div className='photoStream--photoContain--photoDetails--description'>{photo.description}</div>
+              <div className='photoStream--photoContain--photoDetails--street'>{photo.street} X {photo.cross_street}</div>
+              {/* <div className='photoStream--photoContain--photoDetails--cross_street'>Cross Street: {photo.cross_street}</div> */}
             </div>
           </div>
         )
