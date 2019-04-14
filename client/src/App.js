@@ -1,60 +1,47 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Switch, Link, Route } from 'react-router-dom'
-import ImageUploader from 'react-images-upload';
-import Feed from './Components/Feed'
-import PictureUpload from './Components/PictureUpload'
+// import { Route } from 'react-router-dom'
 import Nav from './Components/Nav'
-import LogIn from './Components/LogIn'
-import Form from './Components/uploadForm.js'
+import axios from 'axios'
+import PhotosFeed from './Components/PhotosFeed.js'
 
-/* import components here */
 
-/* global variables here */
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state={
-/*set state here */
-      pictureURLS: []
+      photos: [] 
     }
-/*bind functions here */
-this.setPictureURL=this.setPictureURL.bind(this)
-  }
+  this.getPhotosFeed=this.getPhotosFeed.bind(this)
+}
 
-/* write functions here */
-setPictureURL = async (url) =>{
-  let photos = this.state.pictureURLS
-  photos.push(url)
-  this.setState({pictureURLS:photos})
-  console.log('state on new picture upload', this.state.pictureURLS)
+getPhotosFeed = async () => {
+  axios
+    .get('http://localhost:3001/')
+    .then(response=> {
+      console.log('axios get', response.data.photos)
+      return response.data.photos
+
+      })
+      .then(data=>{
+        this.setState({photos: data})
+        console.log('then axios set state', this.state.photos)
+    })
+    .catch((error)=> {
+      console.log("Error:", error)
+    })
+}
+
+componentDidMount = () => {
+  this.getPhotosFeed()
 }
 
   render() {
     return (
       <div className="App">
           <Nav />
-          <Form setPictureURL={this.setPictureURL}/>
-
-
-          <Route 
-            path='/LogIn'
-            component={LogIn}
-          />  
-
-          <Route 
-            path='/Feed'
-            component={Feed}
-          /> 
-
-          {/*create container div for routes
-          define 'switch'
-          */}
-
-          {/* <PictureUpload setPictureURL={this.setPictureURL}/> */}
-          
-          {/* route paths: use "buildings-app" assignment for model */}
+          <PhotosFeed photos={this.state.photos}/>
       </div>
     );
   }
