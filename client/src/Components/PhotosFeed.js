@@ -1,39 +1,32 @@
 import React, {Component} from 'react'
 
 class PhotosFeed extends Component {
-    // constructor(props){
-    //     super(props)
+    constructor(props){
+        super(props)
+        this.state = {
+            photos: ''
+        }
     // this.photoStreamFunc = this.photoStreamFunc.bind(this)    
-    
-
-    // photoStreamFunc(){
-    //     let feed = this.props.feedphoto
-        
-
-    //     return this.props.feedphoto.map(element=> {
-    //         console.log(element.photos)
-    //         return (
-    //             <div>
-    //                 <img src={element.photos} alt="hgfd" />       
-    //             </div>
-    //         )
-
-    //         })
-        
-    // }
+    }
+    photoStreamFunc(){
+        console.log(this.props[0])
+        // return this.props.photos.map(photos => (
+        //     <div>
+        //         {console.log(photos)}
+        //     </div>
+        // ))     
+    }
+   
     
 
   render () {
-    let feed = this.props.feedphoto.photos.map((element)=>(
-        <li>{element}</li>
-    ))
-
     return (
       <div>
-          <img id="feed_image" src={element.image}/>
          {/* {this.photoStreamFunc()}  */}
-      </div>
+    </div>
     )
   }
 }
+
+
 export default PhotosFeed
