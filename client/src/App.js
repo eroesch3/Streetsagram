@@ -20,13 +20,13 @@ getPhotosFeed = async () => {
   axios
     .get('http://localhost:3001/')
     .then(response=> {
-      console.log(response.data.photos)
+      console.log('axios get', response.data.photos)
       return response.data.photos
-      
+
       })
       .then(data=>{
         this.setState({photos: data})
-        console.log(this.state.photos)
+        console.log('then axios set state', this.state.photos)
     })
     .catch((error)=> {
       console.log("Error:", error)
