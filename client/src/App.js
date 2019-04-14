@@ -40,7 +40,7 @@ componentDidMount = () => {
     return (
       <div className="App">
           <Nav />
-          <PhotosFeed render={()=><PhotosFeed photos={this.state.photos}/>}/>
+          <PhotosFeed photos={this.state.photos}/>
       </div>
     );
   }
