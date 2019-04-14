@@ -11,7 +11,7 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state={
-      photos: '' 
+      photos: [] 
     }
   this.getPhotosFeed=this.getPhotosFeed.bind(this)
 }
@@ -25,7 +25,8 @@ getPhotosFeed = async () => {
       
       })
       .then(data=>{
-        this.setState({photos: data.photos})
+        this.setState({photos: data})
+        console.log(this.state.photos)
     })
     .catch((error)=> {
       console.log("Error:", error)
