@@ -41,7 +41,7 @@ class PhotosFeed extends Component {
 
   render () {
     return (
-      <div>
+      <div className='photoStream'>
          {this.photoStreamFunc()}
       </div>
     )
