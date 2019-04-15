@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-// import { Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Nav from './Components/Nav'
 import axios from 'axios'
 import PhotosFeed from './Components/PhotosFeed.js'
-
+import UploadForm from './Components/uploadForm'
 
 
 class App extends Component {
@@ -41,7 +41,15 @@ componentDidMount = () => {
     return (
       <div className="App">
           <Nav />
+          <UploadForm />
           <PhotosFeed photos={this.state.photos}/>
+
+          <main>
+            <Route 
+              path='/Post'
+              component={UploadForm}
+            />
+          </main>
       </div>
     );
   }
