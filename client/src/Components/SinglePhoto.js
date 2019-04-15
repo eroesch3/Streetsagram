@@ -14,7 +14,6 @@ class SinglePhoto extends Component{
             cross_street: '',
             photo:[],
         }
-    //   this.getOnePhoto=this.getOnePhoto.bind(this)
     this.getPhoto=this.getPhoto.bind(this)
     }
     
@@ -23,8 +22,8 @@ class SinglePhoto extends Component{
         axios
           .get(`http://localhost:3001/photo/${this.props.match.params.id}`)
           .then(response=> {
-              this.setState({photo: response})
-              console.log('get single photo response.data', response)
+              this.setState({photo: response.data})
+              console.log('get single photo response.data', response.data)
           })
           .catch((error)=> {
             console.log("Error:", error)
@@ -35,17 +34,6 @@ class SinglePhoto extends Component{
         this.getPhoto()
     }
 
-    // getOnePhoto(){
-    //     fetch(`http://localhost:3001/photo/${this.props.match.params.id}`)
-    //     .then(response=>{
-    //         // console.log(response)
-    //         return response
-    //     })
-    //     .then(data=>{
-    //         console.log('data',data)
-    //         // this.setState({building: data.building})
-    //     })
-    // }
     render(){
 
         return(
