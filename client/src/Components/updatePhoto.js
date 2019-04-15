@@ -6,7 +6,7 @@ class UpdatePhoto extends Component {
         super(props)
         this.state={
             file: null,
-            image: '',  
+            url: '',  
             description: '',  
             street: '',
             cross_street: '' 
@@ -28,7 +28,7 @@ class UpdatePhoto extends Component {
     
       onFormSubmit= async (event)=>{
         event.preventDefault()
-    
+      if (this.state.file){
       const formData = new FormData();
       let photo = this.state.file[0]
       formData.append('file', photo, photo.name)
@@ -46,7 +46,7 @@ class UpdatePhoto extends Component {
     
       let data = {
         id: this.props.photoId,
-        image: this.state.url || this.props.url,
+        url: this.state.url || this.props.url,
         description: this.state.description || this.props.description,
         street: this.state.street || this.props.street,
         cross_street: this.state.cross_street || this.props.cross_street
@@ -54,8 +54,8 @@ class UpdatePhoto extends Component {
     
       console.log('data', data)
     
-      await fetch('http://localhost:3001/post', {
-        method: 'POST',
+      await fetch(`http://localhost:3001/photo/${this.props.photoId}`, {
+        method: 'PUT',
         body: JSON.stringify(data),
         headers: {
           'Content-Type': 'application/json'
@@ -68,11 +68,43 @@ class UpdatePhoto extends Component {
       
       this.setState({
         file: '',
-        image: '',
+        url: '',
         description:'',
         street: '',
         cross_street: ''
       })
+    } else {
+        let data = {
+            id: this.props.photoId,
+            url: this.props.url,
+            description: this.state.description || this.props.description,
+            street: this.state.street || this.props.street,
+            cross_street: this.state.cross_street || this.props.cross_street
+          }
+        
+          console.log('data', data)
+        
+          await fetch(`http://localhost:3001/photo/${this.props.photoId}`, {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(response => {
+              console.log('ellse fetch', response)
+            // return response.json();
+          })
+          
+          this.setState({
+            file: '',
+            image: '',
+            description:'',
+            street: '',
+            cross_street: ''
+          })
+
+    }
     }
     //functions
     render(){
@@ -87,7 +119,7 @@ class UpdatePhoto extends Component {
                 label='upload file' 
                 type='file' 
                 name='url'
-                value={this.state.value}
+                value={this.state.url}
                 onChange={this.handleFileUpload}
               />
             </div>
@@ -99,7 +131,7 @@ class UpdatePhoto extends Component {
                 id='update--photoDescription'
                 name='description'
                 type='string'
-                value={this.state.value}
+                value={this.state.description}
                 onChange={this.onFormChange}
               />
             </div>  
@@ -111,7 +143,7 @@ class UpdatePhoto extends Component {
                 id='update--photoStreet'
                 name='street'
                 type='string'
-                value={this.state.value}
+                value={this.state.street}
                 onChange={this.onFormChange}
               />
             </div>  
@@ -123,7 +155,7 @@ class UpdatePhoto extends Component {
                 id='update--photoCross'
                 name='cross_street'
                 type='string'
-                value={this.state.value}
+                value={this.state.cross_street}
                 onChange={this.onFormChange}
               />
             </div>  
