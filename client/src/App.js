@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route } from 'react-router-dom'
 import Nav from './Components/Nav'
 import axios from 'axios'
 import PhotosFeed from './Components/PhotosFeed.js'
