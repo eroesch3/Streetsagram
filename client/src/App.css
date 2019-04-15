@@ -106,6 +106,8 @@
 }
 
 /* upload form! */
+
+
 .uploadform--uploadformcontain{
   height: auto;
   width: 500px;
@@ -125,9 +127,9 @@
   font-size: 24px;
 }
 #photoSelect{
-  padding-left: 20px;
+  padding-left: 160px;
   height: 40px;
-  color: lightgray;
+  color: transparent;
 }
 .uploadform--uploadform--description{
   display: flex;

@@ -83,7 +83,7 @@ export default class UploadForm extends Component {
         <div className='uploadform--uploadform--url'>
           <label htmlFor='url'>Select Photo</label>
           <br />
-          <input
+          <input 
             id='photoSelect'
             label='upload file' 
             type='file' 
