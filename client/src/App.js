@@ -41,8 +41,8 @@ componentDidMount = () => {
     return (
       <div className="App">
           <Nav />
-          <UploadForm />
-          <PhotosFeed photos={this.state.photos}/>
+          {/* <UploadForm /> */}
+          <PhotosFeed photos={this.state.photos}/> 
 
           <main>
             <Route 
