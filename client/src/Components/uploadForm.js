@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import PictureUpload from './PictureUpload'
 import axios from 'axios'
 
-const url='http://localhost:3001/post'
-
 export default class UploadForm extends Component {
   constructor(props){
     super(props)
@@ -30,7 +28,6 @@ export default class UploadForm extends Component {
 
   onFormSubmit= async (event)=>{
     event.preventDefault()
-
   const formData = new FormData();
   let photo = this.state.file[0]
   formData.append('file', photo, photo.name)
@@ -39,8 +36,8 @@ export default class UploadForm extends Component {
           'Content-Type': 'multipart/form-data'
       }
   }).then(response=>{
-      console.log(response.data)
-      this.props.setPictureURL(response.data.Location)
+      console.log('response data', response.data)
+      this.props.sendURL(response.data.Location)
       this.setState({url:response.data.Location})
   }).catch(error=>{
       console.log(error)
@@ -55,7 +52,7 @@ export default class UploadForm extends Component {
 
   console.log('data', data)
 
-  await fetch(url, {
+  await fetch('http://localhost:3001/post', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {

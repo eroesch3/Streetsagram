@@ -24,10 +24,13 @@ class UpdatePhoto extends Component {
     
       handleFileUpload = async (e) => {
         await this.setState({file: e.target.files})
+        console.log('fileupdate upload', this.state.file)
       }
     
       onFormSubmit= async (event)=>{
         event.preventDefault()
+    //   await this.handleFileUpload()
+      console.log('formsubmit file upload', this.state.file)
       if (this.state.file){
       const formData = new FormData();
       let photo = this.state.file[0]

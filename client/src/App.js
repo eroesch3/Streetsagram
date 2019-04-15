@@ -14,6 +14,13 @@ class App extends Component {
       photos: [] 
     }
   this.getPhotosFeed=this.getPhotosFeed.bind(this)
+  this.addPhoto=this.addPhoto.bind(this)
+}
+
+addPhoto = async (url) => {
+  let photos = this.state.photos
+  photos.push(url)
+  this.setState({photos})
 }
 
 getPhotosFeed = async () => {
@@ -41,7 +48,6 @@ componentDidMount = () => {
     return (
       <div className="App">
           <Nav />
-          {/* <UploadForm /> */}
           <PhotosFeed photos={this.state.photos}/> 
 
           <main>
