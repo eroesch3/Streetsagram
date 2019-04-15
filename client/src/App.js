@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Nav from './Components/Nav'
 import axios from 'axios'
+import UpdatePhoto from './Components/updatePhoto.js'
 import PhotosFeed from './Components/PhotosFeed.js'
 import UploadForm from './Components/uploadForm'
 import {
@@ -72,7 +73,7 @@ componentDidMount = () => {
           <Route exact path="/" render={() => <PhotosFeed photos={this.state.photos} deletePhotoFromState={this.deletePhotoFromState}/> } />
 
           <Route exact path="/Post" render={() => <UploadForm />} />
-          <Route exact path ='/photo/:id' render={()=> <UploadForm/>}/>
+          <Route exact path ='/photo/:id' render={()=> <UpdatePhoto/>}/>
 
    
           </main>
