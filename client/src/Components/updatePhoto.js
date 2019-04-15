@@ -12,7 +12,6 @@ class UpdatePhoto extends Component {
             cross_street: '' 
         }
     this.handleFileUpload=this.handleFileUpload.bind(this)
-     //bind functions
     }
 
     onFormChange=event=>{
@@ -24,7 +23,6 @@ class UpdatePhoto extends Component {
     
       handleFileUpload = async (e) => {
         this.setState({file: e.target.files})
-        console.log('fileupdate upload', this.state.file)
         const formData = new FormData();
         let photo = e.target.files[0]
         formData.append('file', photo, photo.name)
@@ -33,7 +31,6 @@ class UpdatePhoto extends Component {
                 'Content-Type': 'multipart/form-data'
             }
         }).then(response=>{
-            console.log(response.data)
             this.setState({url:response.data.Location})
         }).catch(error=>{
             console.log(error)
@@ -42,8 +39,6 @@ class UpdatePhoto extends Component {
     
       onFormSubmit= async (event)=>{
         event.preventDefault()
-    //   await this.handleFileUpload()
-      console.log('formsubmit file upload', this.state.file)
       if (this.state.file){
       let data = {
         id: this.props.photoId,
@@ -53,8 +48,6 @@ class UpdatePhoto extends Component {
         cross_street: this.state.cross_street || this.props.cross_street
       }
     
-      console.log('data', data)
-    
       await fetch(`http://localhost:3001/photo/${this.props.photoId}`, {
         method: 'PUT',
         body: JSON.stringify(data),
@@ -63,7 +56,6 @@ class UpdatePhoto extends Component {
         }
       })
       .then(response => {
-        console.log('fetch', response)
         response.json()
       })
       
@@ -82,8 +74,7 @@ class UpdatePhoto extends Component {
             street: this.state.street || this.props.street,
             cross_street: this.state.cross_street || this.props.cross_street
           }
-        
-          console.log('data', data)
+
         
           await fetch(`http://localhost:3001/photo/${this.props.photoId}`, {
             method: 'PUT',
@@ -93,13 +84,12 @@ class UpdatePhoto extends Component {
             }
           })
           .then(response => {
-              console.log('ellse fetch', response)
-            // return response.json();
+            return response.json();
           })
           
           this.setState({
             file: '',
-            image: '',
+            url: '',
             description:'',
             street: '',
             cross_street: ''
@@ -121,16 +111,10 @@ class UpdatePhoto extends Component {
                         label='upload file' 
                         type='file' 
                         name='url'
-                        // value={this.state.url}
                         onChange={this.handleFileUpload}
                     />
                     </div>
-                
 
-                
-
-
-                
                     <div className='updateform--updateform--description'>
                     <label htmlFor='description'>Photo Description</label>
                     <br />
@@ -138,7 +122,6 @@ class UpdatePhoto extends Component {
                         id='update--photoDescription'
                         name='description'
                         type='string'
-                        // value={this.state.description}
                         onChange={this.onFormChange}
                     />
                     </div>  
@@ -150,7 +133,6 @@ class UpdatePhoto extends Component {
                         id='update--photoStreet'
                         name='street'
                         type='string'
-                        // value={this.state.street}
                         onChange={this.onFormChange}
                     />
                     </div>  
@@ -162,7 +144,6 @@ class UpdatePhoto extends Component {
                         id='update--photoCross'
                         name='cross_street'
                         type='string'
-                        // value={this.state.cross_street}
                         onChange={this.onFormChange}
                     />
                     </div>  
