@@ -16,6 +16,7 @@ export class Nav extends Component {
             <ul className='navList--links--takeToDifferentComponents'>
                 <li className='list--link--takeToLogin'><Link to='/LogIn'>Login</Link></li>
                 <li className='list--link--takeToFeed'><Link to='/Feed'>Feed</Link></li>
+                <li className='list--link--takeToPost'><Link to='/Post'>Post</Link></li>
             </ul>
 
            

@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const url='http://localhost:3001/post'
 
-export default class Form extends Component {
+export default class UploadForm extends Component {
   constructor(props){
     super(props)
       this.state={
@@ -78,12 +78,13 @@ export default class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onFormSubmit}>
+      <form className='uploadform--uploadformcontain' onSubmit={this.onFormSubmit}>
         
         <div className='uploadform--uploadform--url'>
           <label htmlFor='url'>Select Photo</label>
           <br />
           <input
+            id='photoSelect'
             label='upload file' 
             type='file' 
             name='url'
@@ -92,14 +93,11 @@ export default class Form extends Component {
           />
         </div>
 
-        {/* <div className='uploadform--uploadform--url'>
-          <PictureUpload setPictureURL={this.props.setPictureURL}/>
-        </div> */}
-
         <div className='uploadform--uploadform--description'>
           <label htmlFor='description'>Photo Description</label>
           <br />
           <input
+            id='photoDescription'
             name='description'
             type='string'
             value={this.state.value}
@@ -111,6 +109,7 @@ export default class Form extends Component {
           <label htmlFor='street'>Street</label>
           <br />
           <input
+            id='photoStreet'
             name='street'
             type='string'
             value={this.state.value}
@@ -122,6 +121,7 @@ export default class Form extends Component {
           <label htmlFor='cross_street'>Cross Street</label>
           <br />
           <input
+            id='photoCross'
             name='cross_street'
             type='string'
             value={this.state.value}
@@ -131,6 +131,7 @@ export default class Form extends Component {
           
         <div className='uploadform--uploadform--button'>
           <button
+            id='photoSubmit'
             type='submit'
             value='submit'
             text='Submit Photo'>
