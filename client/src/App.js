@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom'
-import { withRouter } from "react-router";
 import Nav from './Components/Nav'
 import axios from 'axios'
 import PhotosFeed from './Components/PhotosFeed.js'
 import UploadForm from './Components/uploadForm'
+import {
+  Route,
+  Link,
+  Redirect,
+  Switch
+ } from "react-router-dom"
+
+
+
 
 global.serverurl= 'http://localhost:3001'
 
@@ -56,22 +64,25 @@ componentDidMount = () => {
 
   render() {
     return (
+      <div>
       <div className="App">
           <Nav />
-          <main>
-            <Route 
-              path='/Post'
-              render={() => <UploadForm/>} 
-            />
-            <Route 
-              path='/' 
-              render={()=> <PhotosFeed photos={this.state.photos} deletePhotoFromState={this.deletePhotoFromState}/>}
-            />
 
+          <Switch>
+          <main>
+          <Route exact path="/" render={() => <PhotosFeed photos={this.state.photos} deletePhotoFromState={this.deletePhotoFromState}/> } />
+
+          <Route exact path="/Post" render={() => <UploadForm />} />
+          <Route exact path ='/photo/:id' render={()=> <UploadForm/>}/>
+
+   
           </main>
+      </Switch>    
+      </div>
       </div>
     );
   }
 }
 
 export default App
+

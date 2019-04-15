@@ -2,14 +2,12 @@ import React, { Component } from 'react'
 import PictureUpload from './PictureUpload'
 import axios from 'axios'
 
-const url='http://localhost:3001/post'
-
 export default class UploadForm extends Component {
   constructor(props){
     super(props)
       this.state={
         file: null,
-        image: '',  
+        url: '',  
         description: '',  
         street: '',
         cross_street: ''  
@@ -25,26 +23,24 @@ export default class UploadForm extends Component {
   }
 
   handleFileUpload = async (e) => {
-    await this.setState({file: e.target.files})
+    this.setState({file: e.target.files})
+    const formData = new FormData();
+    let photo = e.target.files[0]
+    formData.append('file', photo, photo.name)
+    await axios.post(`http://localhost:3001/upload`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    }).then(response=>{
+        this.setState({url:response.data.Location})
+    }).catch(error=>{
+        console.log(error)
+    })
   }
 
   onFormSubmit= async (event)=>{
     event.preventDefault()
 
-  const formData = new FormData();
-  let photo = this.state.file[0]
-  formData.append('file', photo, photo.name)
-  await axios.post(`http://localhost:3001/upload`, formData, {
-      headers: {
-          'Content-Type': 'multipart/form-data'
-      }
-  }).then(response=>{
-      console.log(response.data)
-      this.props.setPictureURL(response.data.Location)
-      this.setState({url:response.data.Location})
-  }).catch(error=>{
-      console.log(error)
-  })
 
   let data = {
     image: this.state.url,
@@ -53,9 +49,7 @@ export default class UploadForm extends Component {
     cross_street: this.state.cross_street
   }
 
-  console.log('data', data)
-
-  await fetch(url, {
+  await fetch('http://localhost:3001/post', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
@@ -63,13 +57,12 @@ export default class UploadForm extends Component {
     }
   })
   .then(response => {
-    console.log('fetch', response)
     response.json()
   })
   
   this.setState({
-    file: '',
-    image: '',
+    file: null,
+    url: '',
     description:'',
     street: '',
     cross_street: ''
