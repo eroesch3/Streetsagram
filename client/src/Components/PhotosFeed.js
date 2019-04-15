@@ -11,6 +11,8 @@ class PhotosFeed extends Component {
     this.photoStreamFunc = this.photoStreamFunc.bind(this)    
     }
 
+
+
     photoStreamFunc(){
         const {photos} = this.props
         return photos.map((photo)=>
@@ -19,7 +21,6 @@ class PhotosFeed extends Component {
             <div className='photoStream--photoContain--photoDetails'>
               <div className='photoStream--photoContain--photoDetails--description'>{photo.description}</div>
               <div className='photoStream--photoContain--photoDetails--street'>{photo.street} X {photo.cross_street}</div>
-              {/* <div className='photoStream--photoContain--photoDetails--cross_street'>Cross Street: {photo.cross_street}</div> */}
             </div>
             <div className='photoStream--photoContain--photoUD'>
               <div className='photoStream--photoContain--photoUD--update'>
@@ -33,6 +34,7 @@ class PhotosFeed extends Component {
             </div>
           </div>
         )   
+  
     }
    
     
