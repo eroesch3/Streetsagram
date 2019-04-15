@@ -30,7 +30,7 @@ class PhotosFeed extends Component {
               <div className='photoStream--photoContain--photoUD--update'>
                 <UpdatePhoto 
                   photoId = {photo.id}
-                  src={photo.image}
+                  url={photo.image}
                   description={photo.description}
                   street={photo.street}
                   cross_street={photo.cross_street}/>

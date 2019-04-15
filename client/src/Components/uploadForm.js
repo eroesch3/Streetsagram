@@ -9,7 +9,7 @@ export default class UploadForm extends Component {
     super(props)
       this.state={
         file: null,
-        image: '',  
+        url: '',  
         description: '',  
         street: '',
         cross_street: ''  
@@ -47,7 +47,7 @@ export default class UploadForm extends Component {
   })
 
   let data = {
-    image: this.state.url,
+    url: this.state.url,
     description: this.state.description,
     street: this.state.street,
     cross_street: this.state.cross_street
@@ -68,8 +68,8 @@ export default class UploadForm extends Component {
   })
   
   this.setState({
-    file: '',
-    image: '',
+    file: null,
+    url: '',
     description:'',
     street: '',
     cross_street: ''
