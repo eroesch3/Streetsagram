@@ -10,11 +10,6 @@ class PhotosFeed extends Component {
     this.photoStreamFunc = this.photoStreamFunc.bind(this)    
     }
 
-    // componentDidMount(){
-    //   // this.setState({photos:this.props.photos})
-    //   console.log('photosFeed', this.state.photos)
-    //   this.photoStreamFunc()
-    // }
 
     photoStreamFunc(){
         const {photos} = this.props
@@ -24,7 +19,6 @@ class PhotosFeed extends Component {
             <div className='photoStream--photoContain--photoDetails'>
               <div className='photoStream--photoContain--photoDetails--description'>{photo.description}</div>
               <div className='photoStream--photoContain--photoDetails--street'>{photo.street} X {photo.cross_street}</div>
-              {/* <div className='photoStream--photoContain--photoDetails--cross_street'>Cross Street: {photo.cross_street}</div> */}
             </div>
             <div className='photoStream--photoContain--photoUD'>
               <div className='photoStream--photoContain--photoUD--update'>
@@ -38,14 +32,7 @@ class PhotosFeed extends Component {
             </div>
           </div>
         )
-
-        // this.setState({photos: this.props.photos})
-        // console.log('photos feed component function', this.state.photos)
-        // return this.props.photos.map(photos => (
-        //     <div>
-        //         {console.log(photos)}
-        //     </div>
-        // ))     
+  
     }
    
     
