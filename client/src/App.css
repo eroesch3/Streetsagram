@@ -84,6 +84,9 @@
   border-radius: 8px;
   border: 2px solid black;
 }
+.photoStream--photoContain--photo:hover{
+  border: 10px dashed yellow;
+}
 .photoStream--photoContain--photoDetails{
   display: flex;
   flex-direction: column;
