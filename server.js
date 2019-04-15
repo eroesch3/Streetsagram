@@ -198,7 +198,7 @@ app.get('/photo/:id', async (req, res) => {
   try {
     const singlePhoto = req.params.id
     console.log(singlePhoto)
-    const photo = await Photos.findByPk(singlePhoto, {raw:true})
+    const photo = await Photos.findByPk(singlePhoto, {where: {id:singlePhoto}})
     res.json({
         photo
     })
