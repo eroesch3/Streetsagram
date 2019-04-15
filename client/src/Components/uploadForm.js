@@ -23,10 +23,7 @@ export default class UploadForm extends Component {
   }
 
   handleFileUpload = async (e) => {
-    // await 
     this.setState({file: e.target.files})
-
-    //copied below
     const formData = new FormData();
     let photo = e.target.files[0]
     formData.append('file', photo, photo.name)
@@ -35,8 +32,6 @@ export default class UploadForm extends Component {
             'Content-Type': 'multipart/form-data'
         }
     }).then(response=>{
-        console.log('response data', response.data)
-        // this.props.sendURL(response.data.Location)
         this.setState({url:response.data.Location})
     }).catch(error=>{
         console.log(error)
@@ -54,8 +49,6 @@ export default class UploadForm extends Component {
     cross_street: this.state.cross_street
   }
 
-  console.log('data', data)
-
   await fetch('http://localhost:3001/post', {
     method: 'POST',
     body: JSON.stringify(data),
@@ -64,7 +57,6 @@ export default class UploadForm extends Component {
     }
   })
   .then(response => {
-    console.log('fetch', response)
     response.json()
   })
   

@@ -23,13 +23,6 @@ class App extends Component {
       photos: [] 
     }
   this.getPhotosFeed=this.getPhotosFeed.bind(this)
-  this.addPhoto=this.addPhoto.bind(this)
-}
-
-addPhoto = async (url) => {
-  let photos = this.state.photos
-  photos.push(url)
-  this.setState({photos})
 }
 
 getPhotosFeed = async () => {
@@ -61,7 +54,7 @@ componentDidMount = () => {
           <Switch>
           <main>
           <Route exact path="/" render={() => <PhotosFeed photos={this.state.photos}/> } />
-          <Route exact path="/Post" render={(props) => <UploadForm {...props} sendURL={this.addPhoto}/>} />
+          <Route exact path="/Post" render={() => <UploadForm />} />
           </main>
       </Switch>    
       </div>
