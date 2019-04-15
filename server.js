@@ -193,6 +193,21 @@ app.delete('/comments/:photo_id', async (req, res) => {
 
 
 //PHOTOS SECTION (put, create, delete) Get photos path is our main page; see above!
+//GET /photo
+app.get('/photo/:id', async (req, res) => {
+  try {
+    const singlePhoto = req.params.id
+    console.log(singlePhoto)
+    const photo = await Photos.findByPk(singlePhoto, {raw:true})
+    res.json({
+        photo
+    })
+  } catch (error) {
+    console.error(e)
+    res.status(500).json({message: e.message})
+  }
+})
+
 // PUT /photo
 app.put('/photo/:id', async (req, res) => {
     try {
