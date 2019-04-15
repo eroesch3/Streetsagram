@@ -23,28 +23,32 @@ export default class UploadForm extends Component {
   }
 
   handleFileUpload = async (e) => {
-    await this.setState({file: e.target.files})
+    // await 
+    this.setState({file: e.target.files})
+
+    //copied below
+    const formData = new FormData();
+    let photo = e.target.files[0]
+    formData.append('file', photo, photo.name)
+    await axios.post(`http://localhost:3001/upload`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    }).then(response=>{
+        console.log('response data', response.data)
+        // this.props.sendURL(response.data.Location)
+        this.setState({url:response.data.Location})
+    }).catch(error=>{
+        console.log(error)
+    })
   }
 
   onFormSubmit= async (event)=>{
     event.preventDefault()
-  const formData = new FormData();
-  let photo = this.state.file[0]
-  formData.append('file', photo, photo.name)
-  await axios.post(`http://localhost:3001/upload`, formData, {
-      headers: {
-          'Content-Type': 'multipart/form-data'
-      }
-  }).then(response=>{
-      console.log('response data', response.data)
-      this.props.sendURL(response.data.Location)
-      this.setState({url:response.data.Location})
-  }).catch(error=>{
-      console.log(error)
-  })
+
 
   let data = {
-    url: this.state.url,
+    image: this.state.url,
     description: this.state.description,
     street: this.state.street,
     cross_street: this.state.cross_street

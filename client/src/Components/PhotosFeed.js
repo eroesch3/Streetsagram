@@ -20,7 +20,7 @@ class PhotosFeed extends Component {
         const {photos} = this.props
         return photos.map((photo)=>
           <div className='photoStream--photoContain' key = {photo.id}>
-            <img className='photoStream--photoContain--photo' src={photo.image}/>
+            <a href={photo.image}><img className='photoStream--photoContain--photo' src={photo.url}/></a>
             <div className='photoStream--photoContain--photoDetails'>
               <div className='photoStream--photoContain--photoDetails--description'>{photo.description}</div>
               <div className='photoStream--photoContain--photoDetails--street'>{photo.street} X {photo.cross_street}</div>
@@ -30,7 +30,7 @@ class PhotosFeed extends Component {
               <div className='photoStream--photoContain--photoUD--update'>
                 <UpdatePhoto 
                   photoId = {photo.id}
-                  url={photo.image}
+                  url={photo.url}
                   description={photo.description}
                   street={photo.street}
                   cross_street={photo.cross_street}/>

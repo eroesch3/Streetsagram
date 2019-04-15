@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route } from 'react-router-dom'
+// import { BrowserRouter, Route } from 'react-router-dom';
 import Nav from './Components/Nav'
 import axios from 'axios'
 import PhotosFeed from './Components/PhotosFeed.js'
 import UploadForm from './Components/uploadForm'
+import {
+  Route,
+  Link,
+  Redirect,
+  Switch
+ } from "react-router-dom"
+
+
+
 
 
 class App extends Component {
@@ -46,19 +55,20 @@ componentDidMount = () => {
 
   render() {
     return (
+      <div>
       <div className="App">
           <Nav />
-          <PhotosFeed photos={this.state.photos}/> 
-
+          <Switch>
           <main>
-            <Route 
-              path='/Post'
-              component={UploadForm}
-            />
+          <Route exact path="/" render={() => <PhotosFeed photos={this.state.photos}/> } />
+          <Route exact path="/Post" render={(props) => <UploadForm {...props} sendURL={this.addPhoto}/>} />
           </main>
+      </Switch>    
+      </div>
       </div>
     );
   }
 }
 
 export default App;
+
