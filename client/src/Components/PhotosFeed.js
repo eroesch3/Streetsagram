@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import UpdatePhoto from './updatePhoto'
+import {Link} from 'react-router-dom'
 
 class PhotosFeed extends Component {
     constructor(props){
@@ -10,17 +11,11 @@ class PhotosFeed extends Component {
     this.photoStreamFunc = this.photoStreamFunc.bind(this)    
     }
 
-    // componentDidMount(){
-    //   // this.setState({photos:this.props.photos})
-    //   console.log('photosFeed', this.state.photos)
-    //   this.photoStreamFunc()
-    // }
-
     photoStreamFunc(){
         const {photos} = this.props
         return photos.map((photo)=>
           <div className='photoStream--photoContain' key = {photo.id}>
-            <a href={photo.image}><img className='photoStream--photoContain--photo' src={photo.image}/></a>
+            <a href={`/photo/${photo.id}`}><img className='photoStream--photoContain--photo' src={photo.image}/></a>
             <div className='photoStream--photoContain--photoDetails'>
               <div className='photoStream--photoContain--photoDetails--description'>{photo.description}</div>
               <div className='photoStream--photoContain--photoDetails--street'>{photo.street} X {photo.cross_street}</div>
@@ -37,15 +32,7 @@ class PhotosFeed extends Component {
               </div>
             </div>
           </div>
-        )
-
-        // this.setState({photos: this.props.photos})
-        // console.log('photos feed component function', this.state.photos)
-        // return this.props.photos.map(photos => (
-        //     <div>
-        //         {console.log(photos)}
-        //     </div>
-        // ))     
+        )   
     }
    
     
