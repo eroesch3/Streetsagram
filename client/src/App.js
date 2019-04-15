@@ -54,7 +54,11 @@ componentDidMount = () => {
           <Switch>
           <main>
           <Route exact path="/" render={() => <PhotosFeed photos={this.state.photos}/> } />
+
           <Route exact path="/Post" render={() => <UploadForm />} />
+          <Route exact path ='/photo/:id' render={()=> <UploadForm/>}/>
+
+   
           </main>
       </Switch>    
       </div>
