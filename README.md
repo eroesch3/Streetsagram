@@ -1,5 +1,5 @@
 # Streetstagram
-Full stack app where users create profiles to share streetscape photos. Streetstagram builds community by
+Full stack app where users share streetscape photos. Streetstagram builds community by
 creating a platform for neighbors to share current events, artists to share their work, and for individuals to engage with
 each other by sharing images of their daily life.
 
