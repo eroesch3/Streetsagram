@@ -96,6 +96,8 @@ class UpdatePhoto extends Component {
           })
 
     }
+    window.location.pathname = '/'
+
     }
     //functions
     render(){

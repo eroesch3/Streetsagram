@@ -39,8 +39,9 @@ export default class UploadForm extends Component {
   }
 
   onFormSubmit= async (event)=>{
+    var form = event.target;
     event.preventDefault()
-
+    form.reset();
 
   let data = {
     image: this.state.url,
@@ -67,6 +68,9 @@ export default class UploadForm extends Component {
     street: '',
     cross_street: ''
   })
+
+  window.location.pathname = '/'
+
 }
 
   render() {
