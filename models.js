@@ -1,16 +1,17 @@
 const Sequelize = require('sequelize');
 
 // Connect to DB
-const db = new Sequelize({
-  database: 'streetstagram_db',
-  dialect:  'postgres',
-  operatorsAliases: false,
-});
+// const db = new Sequelize({
+//   database: 'streetstagram_db',
+//   dialect:  'postgres',
+//   operatorsAliases: false,
+// });
 
 //heroku deployment
-// const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:3001/streetstagram_db', {
-//     dialect: 'postgres'
-//   });
+const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:3001/streetstagram_db', {
+    dialect: 'postgres',
+    operatorsAliases: false,
+  });
 
 // Define Users model
 const Users = db.define('users', {
