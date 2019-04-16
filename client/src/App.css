@@ -274,6 +274,14 @@
   font-family: 'Special Elite', cursive;
   font-size: 16px;
 }
+#update--deleteButton{
+  height: 80px;
+  width: 80px;
+  margin-top: 20px;
+  border-radius: 8px;
+  font-family: 'Special Elite', cursive;
+  font-size: 16px;
+}
 #update--photoStreet{
   width: 250px;
   border-radius: 8px;

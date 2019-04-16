@@ -15,7 +15,7 @@ class SinglePhoto extends Component {
 
   getPhoto = async () => {
     axios
-      .get(`http://localhost:3001/photo/${this.props.match.params.id}`)
+      .get(`https://streetstagram.herokuapp.com/photo/${this.props.match.params.id}`)
       .then(response => {
         const photo = this.state.photo
         const singlePhoto = response.data.photo
