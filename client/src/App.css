@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo');
 @import url('https://fonts.googleapis.com/css?family=Special+Elite');
 
+
+
 .App {
   height: 100%;
   text-align: center;
   font-family: 'Special Elite', cursive;
   color: black;
-  background-color: #4E2E8C;
+  background-image: url('./Components/roadpic2.jpeg');
+  background-attachment: fixed;
+  /* background-image: linear-gradient(360deg, #000004, #140e36,#140e36,#140e36, #3b0f70, #641a80,#641a80,#641a80, #8c2981, #b5367a, #de4968, #f66e5c, #fe9f6d); */
 }
 
 /* navigation header! */
@@ -18,7 +22,9 @@
   justify-content: space-between;
   position: sticky;
   top: 0;
-  background-color: black;
+  background: black;
+  border-bottom: #F4D812 dashed 5px;
+  /* background-image: linear-gradient(180deg, #000004, #140e36,#140e36,#140e36, #3b0f70, #641a80,#641a80,#641a80, #8c2981, #b5367a, #de4968, #f66e5c, #fe9f6d);; */
 }
 
 .logo--navLogo-takeToHomePage > a {
@@ -29,6 +35,7 @@
   text-decoration: none;
   color: white;
   font-size: 40px;
+  text-shadow: 0px 2px #F4D812;
 }
 
 .navList--links--takeToDifferentComponents{
@@ -63,13 +70,14 @@
 .photoStream{
   width: 60%;
   margin: 0 20% 0 20%;
-  background-color: #18025B;
-  /* background-color: rgb(78,46,140, .9); */
+ 
+  /* background-color: #18025B; */
+  background-color: black;
   padding-top: 10px;
   /* border-radius:8px; */
   padding-bottom: 20px;
-  border-left: 15px yellow dashed;
-  border-right: 15px solid white;
+  /* border-left: 10px #fecf92 dashed; */
+  /* border-right: 10px #fecf92 dashed; */
 }
 .photoStream--photoContain{
   display: flex;
@@ -84,9 +92,10 @@
   height: auto;
   border-radius: 8px;
   border: 2px solid black;
+  background: #140e36;
 }
 .photoStream--photoContain--photo:hover{
-  border: 10px dashed yellow;
+  border: 3px #F4D812 dashed;
 }
 .photoStream--photoContain--photoDetails{
   display: flex;
@@ -99,11 +108,14 @@
 .photoStream--photoContain--photoDetails--description{
   font-size: 20px;
   padding: 5px;
-  color: #B0A8B9;
+  color: white;
+  background-color: black;
 }
 .photoStream--photoContain--photoDetails--street{
   padding: 5px;
-  color: #B0A8B9;
+  color: white;
+  background-color: black;
+  border-bottom: 3px #F4D812 dashed;
 }
 
 /* upload form! */
@@ -117,6 +129,7 @@
   border-radius: 8px;
   border: 15px dashed black;
   padding: 20px;
+  background-color: rgba(17, 6, 39, 0.5);
 }
 .uploadform--uploadform--url{
   display: flex;
@@ -124,6 +137,7 @@
   align-self: center;
   justify-content: space-around;
   font-size: 24px;
+  color: white;
 }
 #photoSelect{
   padding-left: 160px;
@@ -135,6 +149,7 @@
   flex-direction: column;
   align-self: center;
   font-size: 18px;
+  color: white;
 }
 #photoDescription{
   padding-left: 40px;
@@ -153,6 +168,7 @@
   align-self: center;
   margin-top: 20px;
   font-size: 18px;
+  color: white;
 }
 #photoStreet{
   width: 250px;
@@ -165,6 +181,7 @@
   align-self: center;
   margin-top: 20px;
   font-size: 18px;
+  color: white;
 }
 #photoCross{
   width: 250px;
