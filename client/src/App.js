@@ -69,14 +69,12 @@ componentDidMount = () => {
           <Nav />
 
           <Switch>
-          <main>
           <Route exact path="/" render={() => <PhotosFeed photos={this.state.photos} deletePhotoFromState={this.deletePhotoFromState}/> } />
 
           <Route exact path="/Post" render={() => <UploadForm />} />
           <Route exact path ='/photo/:id' render={()=> <UpdatePhoto/>}/>
 
    
-          </main>
       </Switch>    
       </div>
       </div>
