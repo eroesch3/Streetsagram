@@ -183,3 +183,80 @@
   font-family: 'Special Elite', cursive;
   font-size: 16px;
 }
+
+/* updateForm */
+
+.updateform--updateInfoContain{
+  height: auto;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  margin: 10% auto;
+  align-content: center;
+  border-radius: 8px;
+  border: 15px dashed black;
+  padding: 20px;
+}
+.updateform--updatePhoto--url{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: space-around;
+  font-size: 24px;  
+}
+
+#update--photoSelect{
+  padding-left: 160px;
+  height: 40px;
+  color: transparent;
+
+}
+.updateform--updateform--description{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  font-size: 18px;
+}
+
+#update--photoDescription{
+  padding-left: 40px;
+  height: 40px;
+  width: 250px;
+  border-radius: 8px;
+  background-color: lightgray;
+  padding: 0;
+}
+.updateform--updateform--street{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin-top: 20px;
+  font-size: 18px;  
+}
+
+.updateform--updateform--crossstreet{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin-top: 20px;
+  font-size: 18px;
+}
+#update--infoSubmit{
+  height: 80px;
+  width: 80px;
+  margin-top: 20px;
+  border-radius: 8px;
+  font-family: 'Special Elite', cursive;
+  font-size: 16px;
+}
+#update--photoStreet{
+  width: 250px;
+  border-radius: 8px;
+  background-color: lightgray;
+}
+
+#update--photoCross{
+  width: 250px;
+  border-radius: 8px;
+  background-color: lightgray;
+}
