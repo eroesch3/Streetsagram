@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import DeletePhoto from './DeletePhoto.js'
 
 class UpdatePhoto extends Component {
   constructor(props) {
@@ -156,7 +157,12 @@ class UpdatePhoto extends Component {
               type='submit'
               value='submit'
               text='Submit Photo'>
-              Submit Photo</button>
+              Update Photo</button>
+            <button 
+              id='update--deleteButton'
+              type='submit'
+              value='submit'  
+              text='Delete Photo'>Delete Photo</button> 
           </div>
 
         </form>
