@@ -16,7 +16,7 @@ import {
 
 
 
-global.serverurl= 'http://localhost:3001'
+global.serverurl= 'https://streetstagram.herokuapp.com/'
 
 class App extends Component {
   constructor(props){

@@ -26,10 +26,10 @@ const s3 = new AWS.S3();
 //we need to app.use logger, bodyparser, and cors for AWS
 app.use(logger('dev'));
 app.use(bodyParser.json())
-
-// app.use("/", express.static("./build/"));
-//USE ABOVE LINE WHEN WE DEPLOY !!!
 app.use(cors());
+app.use("/", express.static("./build/"));
+//USE ABOVE LINE WHEN WE DEPLOY !!!
+
 
 
 //AWS upload file

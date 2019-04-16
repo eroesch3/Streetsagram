@@ -15,7 +15,7 @@ class SinglePhoto extends Component {
 
   getPhoto = async () => {
     axios
-      .get(`http://localhost:3001/photo/${this.props.match.params.id}`)
+      .get(`https://streetstagram.herokuapp.com/photo/${this.props.match.params.id}`)
       .then(response => {
         const photo = this.state.photo
         const singlePhoto = response.data.photo
@@ -38,15 +38,15 @@ class SinglePhoto extends Component {
 
     return singlePhoto.map((photo) =>
       <div className='singlePhoto--photoContain' key={photo.id}>
+        <a href={`/photo/${photo.id}`}><img className='singlePhoto--photoContain--photo' src={photo.image} /></a>
         <div className='singlePhoto--photoContain--photoDetails'>
-          <a href={`/photo/${photo.id}`}><img className='singlePhoto--photoContain--photo' src={photo.image} /></a>
           <div className='singlePhoto--photoContain--photoDetails--description'>{photo.description}</div>
           <div className='singlePhoto--photoContain--photoDetails--street'>{photo.street} X {photo.cross_street}</div>
         </div>
-        
         <div className='singlePhoto--photoContain--photoUD'>
           <div className='singlePhoto--photoContain--photoUD--update'>
             <UpdatePhoto
+             
               photoId={photo.id}
               url={photo.url}
               description={photo.description}
@@ -63,8 +63,7 @@ class SinglePhoto extends Component {
     console.log('render show state description', this.state.photo)
     return (
 
-      <div className='singlePhoto' >
-
+      <div className='singlePhoto--photoContain' >
         {this.showPhoto()}
       </div>
     )
