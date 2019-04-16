@@ -81,14 +81,15 @@
 }
 .photoStream--photoContain{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: auto;
   width: 350px;
-  margin: 20px auto;
+  margin: 20px 14%;
 }
 .photoStream--photoContain--photo{
   display: flex;
-  max-width: 100%;
+  /* position: absolute; */
+  /* max-width: 100%; */
   height: auto;
   border-radius: 8px;
   border: 2px solid black;
@@ -99,6 +100,7 @@
 }
 .photoStream--photoContain--photoDetails{
   display: flex;
+  /* position: relative; */
   flex-direction: column;
   text-align: left;
   padding-top: 5px;
@@ -116,7 +118,9 @@
   color: white;
   background-color: black;
   border-bottom: 3px #F4D812 dashed;
+
 }
+
 
 /* upload form! */
 .uploadform--uploadformcontain{
@@ -213,6 +217,7 @@
   border-radius: 8px;
   border: 15px dashed black;
   padding: 20px;
+  background-color: rgba(17, 6, 39, 0.5);
 }
 .updateform--updatePhoto--url{
   display: flex;
@@ -220,6 +225,7 @@
   align-self: center;
   justify-content: space-around;
   font-size: 24px;  
+  color: white;
 }
 
 #update--photoSelect{
@@ -233,6 +239,7 @@
   flex-direction: column;
   align-self: center;
   font-size: 18px;
+  color: white;
 }
 
 #update--photoDescription{
@@ -249,6 +256,7 @@
   align-self: center;
   margin-top: 20px;
   font-size: 18px;  
+  color: white;
 }
 
 .updateform--updateform--crossstreet{
@@ -257,6 +265,7 @@
   align-self: center;
   margin-top: 20px;
   font-size: 18px;
+  color: white;
 }
 #update--infoSubmit{
   height: 80px;
@@ -277,3 +286,18 @@
   border-radius: 8px;
   background-color: lightgray;
 }
+
+/* singlePhoto */
+
+.singlePhoto--photoContain{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  /* justify-items: ; */
+  /* width:80%;
+  height: 100%;
+  margin: auto; */
+  
+}
+

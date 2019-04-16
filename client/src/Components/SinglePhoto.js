@@ -38,11 +38,12 @@ class SinglePhoto extends Component {
 
     return singlePhoto.map((photo) =>
       <div className='photoStream--photoContain' key={photo.id}>
-        <a href={`/photo/${photo.id}`}><img className='photoStream--photoContain--photo' src={photo.image} /></a>
-        <div className='photoStream--photoContain--photoDetails'>
+      <div className='photoStream--photoContain--photoDetails'>
           <div className='photoStream--photoContain--photoDetails--description'>{photo.description}</div>
           <div className='photoStream--photoContain--photoDetails--street'>{photo.street} X {photo.cross_street}</div>
         </div>
+        <a href={`/photo/${photo.id}`}><img className='photoStream--photoContain--photo' src={photo.image} /></a>
+        
         <div className='photoStream--photoContain--photoUD'>
           <div className='photoStream--photoContain--photoUD--update'>
             <UpdatePhoto
@@ -63,6 +64,7 @@ class SinglePhoto extends Component {
     return (
 
       <div className='singlePhoto--photoContain' >
+
         {this.showPhoto()}
       </div>
     )
