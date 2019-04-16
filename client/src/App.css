@@ -88,6 +88,7 @@
 }
 .photoStream--photoContain--photo{
   display: flex;
+  /* position: absolute; */
   max-width: 100%;
   height: auto;
   border-radius: 8px;
@@ -116,7 +117,9 @@
   color: white;
   background-color: black;
   border-bottom: 3px #F4D812 dashed;
+
 }
+
 
 /* upload form! */
 .uploadform--uploadformcontain{
@@ -205,7 +208,7 @@
 
 .updateform--updateInfoContain{
   height: auto;
-  width: 500px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   margin: 10% auto;
@@ -213,6 +216,7 @@
   border-radius: 8px;
   border: 15px dashed black;
   padding: 20px;
+  background-color: rgba(17, 6, 39, 0.5);
 }
 .updateform--updatePhoto--url{
   display: flex;
@@ -220,6 +224,7 @@
   align-self: center;
   justify-content: space-around;
   font-size: 24px;  
+  color: white;
 }
 
 #update--photoSelect{
@@ -233,6 +238,7 @@
   flex-direction: column;
   align-self: center;
   font-size: 18px;
+  color: white;
 }
 
 #update--photoDescription{
@@ -249,6 +255,7 @@
   align-self: center;
   margin-top: 20px;
   font-size: 18px;  
+  color: white;
 }
 
 .updateform--updateform--crossstreet{
@@ -257,6 +264,7 @@
   align-self: center;
   margin-top: 20px;
   font-size: 18px;
+  color: white;
 }
 #update--infoSubmit{
   height: 80px;
@@ -284,4 +292,40 @@
   width: 250px;
   border-radius: 8px;
   background-color: lightgray;
+}
+
+/* singlePhoto */
+
+.singlePhoto{
+  height: auto;
+  width:80%;
+  margin: 0 auto;
+}
+
+.singlePhoto--photoContain{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 665px;
+  overflow: scroll;
+  width: 78%;
+  margin: 0 auto;
+  background-color: black;
+  color: white;
+  
+
+  
+}
+.singlePhoto--photoContain--photoDetails{
+  display: flex;
+  flex-direction: column;
+}
+.singlePhoto--photoContain--photo{
+  max-width: 370px;
+  height: auto;
+  margin-left: 55px;
+  border-radius: 10px;
+}
+.singlePhoto--photoContain--photoUD--update{
+  margin-right: 0 auto;
 }

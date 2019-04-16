@@ -37,14 +37,15 @@ class SinglePhoto extends Component {
     const singlePhoto = this.state.photo
 
     return singlePhoto.map((photo) =>
-      <div className='photoStream--photoContain' key={photo.id}>
-        <a href={`/photo/${photo.id}`}><img className='photoStream--photoContain--photo' src={photo.image} /></a>
-        <div className='photoStream--photoContain--photoDetails'>
-          <div className='photoStream--photoContain--photoDetails--description'>{photo.description}</div>
-          <div className='photoStream--photoContain--photoDetails--street'>{photo.street} X {photo.cross_street}</div>
+      <div className='singlePhoto--photoContain' key={photo.id}>
+        <div className='singlePhoto--photoContain--photoDetails'>
+          <a href={`/photo/${photo.id}`}><img className='singlePhoto--photoContain--photo' src={photo.image} /></a>
+          <div className='singlePhoto--photoContain--photoDetails--description'>{photo.description}</div>
+          <div className='singlePhoto--photoContain--photoDetails--street'>{photo.street} X {photo.cross_street}</div>
         </div>
-        <div className='photoStream--photoContain--photoUD'>
-          <div className='photoStream--photoContain--photoUD--update'>
+        
+        <div className='singlePhoto--photoContain--photoUD'>
+          <div className='singlePhoto--photoContain--photoUD--update'>
             <UpdatePhoto
               photoId={photo.id}
               url={photo.url}
@@ -62,7 +63,8 @@ class SinglePhoto extends Component {
     console.log('render show state description', this.state.photo)
     return (
 
-      <div className='singlePhoto--photoContain' >
+      <div className='singlePhoto' >
+
         {this.showPhoto()}
       </div>
     )
