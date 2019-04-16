@@ -3,87 +3,86 @@ import PictureUpload from './PictureUpload'
 import axios from 'axios'
 
 export default class UploadForm extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-      this.state={
-        file: null,
-        url: '',  
-        description: '',  
-        street: '',
-        cross_street: ''  
-      }
-      this.handleFileUpload=this.handleFileUpload.bind(this)
+    this.state = {
+      file: null,
+      url: '',
+      description: '',
+      street: '',
+      cross_street: ''
+    }
+    this.handleFileUpload = this.handleFileUpload.bind(this)
   }
-  
-  onFormChange=event=>{
-    const{name,value}=event.target
+
+  onFormChange = event => {
+    const { name, value } = event.target
     this.setState({
-      [name]:value
+      [name]: value
     })
   }
 
   handleFileUpload = async (e) => {
-    this.setState({file: e.target.files})
+    this.setState({ file: e.target.files })
     const formData = new FormData();
     let photo = e.target.files[0]
     formData.append('file', photo, photo.name)
     await axios.post(`http://localhost:3001/upload`, formData, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
-    }).then(response=>{
-        this.setState({url:response.data.Location})
-    }).catch(error=>{
-        console.log(error)
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }).then(response => {
+      this.setState({ url: response.data.Location })
+    }).catch(error => {
+      console.log(error)
     })
   }
 
-  onFormSubmit= async (event)=>{
+  onFormSubmit = async (event) => {
     var form = event.target;
     event.preventDefault()
     form.reset();
 
-  let data = {
-    image: this.state.url,
-    description: this.state.description,
-    street: this.state.street,
-    cross_street: this.state.cross_street
-  }
-
-  await fetch('http://localhost:3001/post', {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-Type': 'application/json'
+    let data = {
+      image: this.state.url,
+      description: this.state.description,
+      street: this.state.street,
+      cross_street: this.state.cross_street
     }
-  })
-  .then(response => {
-    response.json()
-  })
-  
-  this.setState({
-    file: null,
-    url: '',
-    description:'',
-    street: '',
-    cross_street: ''
-  })
 
-  window.location.pathname = '/'
+    await fetch('http://localhost:3001/post', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
+        response.json()
+      })
 
-}
+    this.setState({
+      file: null,
+      url: '',
+      description: '',
+      street: '',
+      cross_street: ''
+    })
+
+    window.location.pathname = '/'
+  }
 
   render() {
     return (
       <form className='uploadform--uploadformcontain' onSubmit={this.onFormSubmit}>
-        
+
         <div className='uploadform--uploadform--url'>
           <label htmlFor='url'>Select Photo</label>
           <br />
           <input
             id='photoSelect'
-            label='upload file' 
-            type='file' 
+            label='upload file'
+            type='file'
             name='url'
             value={this.state.value}
             onChange={this.handleFileUpload}
@@ -100,9 +99,9 @@ export default class UploadForm extends Component {
             value={this.state.value}
             onChange={this.onFormChange}
           />
-        </div>  
+        </div>
 
-        <div className='uploadform--uploadform--street'>        
+        <div className='uploadform--uploadform--street'>
           <label htmlFor='street'>Street</label>
           <br />
           <input
@@ -112,7 +111,7 @@ export default class UploadForm extends Component {
             value={this.state.value}
             onChange={this.onFormChange}
           />
-        </div>  
+        </div>
 
         <div className='uploadform--uploadform--crossstreet'>
           <label htmlFor='cross_street'>Cross Street</label>
@@ -124,8 +123,8 @@ export default class UploadForm extends Component {
             value={this.state.value}
             onChange={this.onFormChange}
           />
-        </div>  
-          
+        </div>
+
         <div className='uploadform--uploadform--button'>
           <button
             id='photoSubmit'
@@ -133,8 +132,7 @@ export default class UploadForm extends Component {
             value='submit'
             text='Submit Photo'>
             Submit Photo</button>
-        </div>  
-
+        </div>
       </form>
     )
   }
