@@ -4,6 +4,7 @@ import Nav from './Components/Nav'
 import axios from 'axios'
 import PhotosFeed from './Components/PhotosFeed.js'
 import UploadForm from './Components/uploadForm'
+import CommentForm from './Components/CommentForm.js'
 import {
   Route,
   Link,
@@ -27,18 +28,17 @@ class App extends Component {
 }
 
 getPhotosFeed = async () => {
-  console.log('something')
   axios
     .get(global.serverurl)
     .then(response=> {
-      console.log('axios get', response.data.photos)
+      // console.log('axios get', response.data.photos)
       return response.data.photos
 
       })
       .then(data=>{
-        console.log(data)
+        // console.log(data)
         this.setState({photos: data})
-        console.log('then axios set state', this.state.photos)
+        // console.log('then axios set state', this.state.photos)
     })
     .catch((error)=> {
       console.log("Error:", error)
@@ -47,7 +47,7 @@ getPhotosFeed = async () => {
 
 deletePhotoFromState(photoid, index){
   this.state.photos.forEach((photo)=>{
-    if (photo.id == photoid){
+    if (photo.id === photoid){
       const photosArray = [...this.state.photos]
       photosArray.pop(index)
       this.setState({photos: photosArray})
@@ -63,21 +63,15 @@ componentDidMount = () => {
 
   render() {
     return (
-      <div>
       <div className="App">
-          <Nav />
-
+        <Nav />
           <Switch>
-          <main>
-          <Route exact path="/" render={() => <PhotosFeed photos={this.state.photos} deletePhotoFromState={this.deletePhotoFromState}/> } />
-
-          <Route exact path="/Post" render={() => <UploadForm />} />
-          <Route exact path ='/photo/:id' render={()=> <UploadForm/>}/>
-
-   
-          </main>
-      </Switch>    
-      </div>
+          {/* <main> */}
+            <Route exact path="/" render={() => <PhotosFeed photos={this.state.photos} comment={this.state.comment} deletePhotoFromState={this.deletePhotoFromState}/> } />
+            <Route exact path="/Post" render={() => <UploadForm />} />
+            <Route exact path ='/photo/:id' render={()=> <UploadForm />}/>
+          {/* </main> */}
+          </Switch>    
       </div>
     );
   }

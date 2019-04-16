@@ -41,6 +41,7 @@ const main = async() => {
        description:'Graffiti2',
        street:'lafayette st.',
        cross_street:'broadway ',
+       comment: '',
        filter:''
     });
 

@@ -64,6 +64,7 @@ const Photos = db.define('photos', {
 //Define Comments model
 const Comments = db.define('comments', {
     comment: {
+        // id: {autoIncrement: true, primaryKey: true, type: Sequelize.Integer},
         type: Sequelize.STRING,
         field: 'comments'
     }
