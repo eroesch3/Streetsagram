@@ -16,7 +16,7 @@ class PictureUpload extends Component {
         const formData = new FormData();
         let photo = this.state.file[0]
         formData.append('file', photo, photo.name)
-        axios.post(`http://localhost:3005/upload`, formData, {
+        axios.post(`https://streetstagram.herokuapp.com/upload`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }

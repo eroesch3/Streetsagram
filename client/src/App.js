@@ -16,7 +16,7 @@ import {
 
 
 
-global.serverurl= 'http://localhost:3001'
+global.serverurl= 'https://streetstagram.herokuapp.com/'
 
 class App extends Component {
   constructor(props){
@@ -70,8 +70,8 @@ componentDidMount = () => {
           <Nav />
 
           <Switch>
-          <Route exact path ='/photo/:id' render={(props)=> <SinglePhoto {...props}/>}/>
-          <Route exact path="/" render={() => <PhotosFeed photos={this.state.photos} deletePhotoFromState={this.deletePhotoFromState}/> } />
+          <Route exact path ='/photo/:id' render={(props)=> <SinglePhoto {...props} deletePhotoFromState={this.deletePhotoFromState} />}/>
+          <Route exact path="/" render={() => <PhotosFeed photos={this.state.photos} /> } />
           <Route exact path="/Post" render={() => <UploadForm />} />
       </Switch>    
       </div>

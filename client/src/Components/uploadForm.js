@@ -27,7 +27,7 @@ export default class UploadForm extends Component {
     const formData = new FormData();
     let photo = e.target.files[0]
     formData.append('file', photo, photo.name)
-    await axios.post(`http://localhost:3001/upload`, formData, {
+    await axios.post(`https://streetstagram.herokuapp.com/upload`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -50,7 +50,7 @@ export default class UploadForm extends Component {
       cross_street: this.state.cross_street
     }
 
-    await fetch('http://localhost:3001/post', {
+    await fetch('https://streetstagram.herokuapp.com/post', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {

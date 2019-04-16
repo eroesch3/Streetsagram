@@ -27,7 +27,7 @@ class UpdatePhoto extends Component {
     const formData = new FormData();
     let photo = e.target.files[0]
     formData.append('file', photo, photo.name)
-    await axios.post(`http://localhost:3001/upload`, formData, {
+    await axios.post(`https://streetstagram.herokuapp.com/upload`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -49,7 +49,7 @@ class UpdatePhoto extends Component {
         cross_street: this.state.cross_street || this.props.cross_street
       }
 
-      await fetch(`http://localhost:3001/photo/${this.props.photoId}`, {
+      await fetch(`https://streetstagram.herokuapp.com/photo/${this.props.photoId}`, {
         method: 'PUT',
         body: JSON.stringify(data),
         headers: {
@@ -77,7 +77,7 @@ class UpdatePhoto extends Component {
       }
 
 
-      await fetch(`http://localhost:3001/photo/${this.props.photoId}`, {
+      await fetch(`https://streetstagram.herokuapp.com/photo/${this.props.photoId}`, {
         method: 'PUT',
         body: JSON.stringify(data),
         headers: {
