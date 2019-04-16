@@ -10,7 +10,6 @@
   color: black;
   background-image: url('./Components/roadpic2.jpeg');
   background-attachment: fixed;
-  /* background-image: linear-gradient(360deg, #000004, #140e36,#140e36,#140e36, #3b0f70, #641a80,#641a80,#641a80, #8c2981, #b5367a, #de4968, #f66e5c, #fe9f6d); */
 }
 
 /* navigation header! */
@@ -24,7 +23,6 @@
   top: 0;
   background: black;
   border-bottom: #F4D812 dashed 5px;
-  /* background-image: linear-gradient(180deg, #000004, #140e36,#140e36,#140e36, #3b0f70, #641a80,#641a80,#641a80, #8c2981, #b5367a, #de4968, #f66e5c, #fe9f6d);; */
 }
 
 .logo--navLogo-takeToHomePage > a {
@@ -70,14 +68,11 @@
 .photoStream{
   width: 60%;
   margin: 0 20% 0 20%;
- 
-  /* background-color: #18025B; */
   background-color: black;
   padding-top: 10px;
-  /* border-radius:8px; */
+
   padding-bottom: 20px;
-  /* border-left: 10px #fecf92 dashed; */
-  /* border-right: 10px #fecf92 dashed; */
+  
 }
 .photoStream--photoContain{
   display: flex;
