@@ -16,7 +16,7 @@ import {
 
 
 
-global.serverurl= 'https://streetstagram.herokuapp.com/'
+const baseUrl = 'https://streetstagram.herokuapp.com/'
 
 class App extends Component {
   constructor(props){
@@ -31,7 +31,7 @@ class App extends Component {
 getPhotosFeed = async () => {
   console.log('something')
   axios
-    .get(global.serverurl)
+    .get(baseUrl)
     .then(response=> {
       console.log('axios get', response.data.photos)
       return response.data.photos
