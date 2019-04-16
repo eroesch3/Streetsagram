@@ -156,7 +156,7 @@ class UpdatePhoto extends Component {
               type='submit'
               value='submit'
               text='Submit Photo'>
-              Submit Photo</button>
+              Update Photo</button>
           </div>
 
         </form>

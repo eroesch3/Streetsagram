@@ -81,15 +81,15 @@
 }
 .photoStream--photoContain{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: auto;
   width: 350px;
-  margin: 20px 14%;
+  margin: 20px auto;
 }
 .photoStream--photoContain--photo{
   display: flex;
   /* position: absolute; */
-  /* max-width: 100%; */
+  max-width: 100%;
   height: auto;
   border-radius: 8px;
   border: 2px solid black;
@@ -100,7 +100,6 @@
 }
 .photoStream--photoContain--photoDetails{
   display: flex;
-  /* position: relative; */
   flex-direction: column;
   text-align: left;
   padding-top: 5px;
@@ -209,7 +208,7 @@
 
 .updateform--updateInfoContain{
   height: auto;
-  width: 500px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   margin: 10% auto;
@@ -289,15 +288,36 @@
 
 /* singlePhoto */
 
+.singlePhoto{
+  height: auto;
+  width:80%;
+  margin: 0 auto;
+}
+
 .singlePhoto--photoContain{
   display: flex;
   flex-direction: row;
-  width: 100%;
   align-items: center;
-  /* justify-items: ; */
-  /* width:80%;
-  height: 100%;
-  margin: auto; */
+  height: 665px;
+  overflow: scroll;
+  width: 78%;
+  margin: 0 auto;
+  background-color: black;
+  color: white;
+  
+
   
 }
-
+.singlePhoto--photoContain--photoDetails{
+  display: flex;
+  flex-direction: column;
+}
+.singlePhoto--photoContain--photo{
+  max-width: 370px;
+  height: auto;
+  margin-left: 55px;
+  border-radius: 10px;
+}
+.singlePhoto--photoContain--photoUD--update{
+  margin-right: 0 auto;
+}
