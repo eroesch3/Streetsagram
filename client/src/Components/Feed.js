@@ -1,24 +1,24 @@
 import ImageUploader from 'react-images-upload';
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
 class Feed extends Component {
-    constructor(props){
-        super(props) 
-        this.state={
+    constructor(props) {
+        super(props)
+        this.state = {
             pictures: []
         }
-        this.onDrop=this.onDrop.bind(this)
+        this.onDrop = this.onDrop.bind(this)
     }
-    
+
     onDrop(picture) {
-        this.setState({pictures: this.state.pictures.push(picture)})
+        this.setState({ pictures: this.state.pictures.push(picture) })
     }
 
-    render(){
+    render() {
 
-        return(
+        return (
             <div className='feed--divContainer'>
-                <ImageUploader 
+                <ImageUploader
                     withIcon={true}
                     buttonText='Choose images'
                     onChange={this.onDrop}

@@ -2,9 +2,9 @@ const Sequelize = require('sequelize');
 
 // Connect to DB
 const db = new Sequelize({
-  database: 'streetstagram_db',
-  dialect:  'postgres',
-  operatorsAliases: false,
+    database: 'streetstagram_db',
+    dialect: 'postgres',
+    operatorsAliases: false,
 });
 
 //heroku deployment
@@ -17,18 +17,16 @@ const Users = db.define('users', {
     username: {
         type: Sequelize.STRING(20),
         field: 'username',
-        set: function(val) {
+        set: function (val) {
             this.setDataValue('username', val.toLowerCase())
         },
-    },    
+    },
     email: {
         type: Sequelize.STRING,
-        // allowNull: false,
         unique: true,
-        isEmail: true, 
-        // notEmpty: true,
+        isEmail: true,
         field: 'email',
-        set: function(val) {
+        set: function (val) {
             this.setDataValue('email', val.toLowerCase())
         },
     },
@@ -36,13 +34,11 @@ const Users = db.define('users', {
 })
 
 //Define Photos model
-const Photos = db.define('photos', {   
+const Photos = db.define('photos', {
     image: {
         type: Sequelize.STRING,
-        // allowNull: false,
-        // notEmpty: true,
         field: 'images'
-    },    
+    },
     description: {
         type: Sequelize.STRING,
         field: 'description'
@@ -50,7 +46,7 @@ const Photos = db.define('photos', {
     street: {
         type: Sequelize.STRING,
         field: 'first street'
-    },    
+    },
     cross_street: {
         type: Sequelize.STRING,
         field: 'cross street'
@@ -82,17 +78,15 @@ const Profiles = db.define('profiles', {
     }
 })
 
-
 // associations
-
-Users.hasMany(Photos, {onDelete: 'cascade'}) //Delete all photos by user
-Users.hasMany(Comments) 
+Users.hasMany(Photos, { onDelete: 'cascade' }) //Delete all photos by user
+Users.hasMany(Comments)
 
 Comments.belongsTo(Users)
 Comments.belongsTo(Photos)
 
 Photos.belongsTo(Users)
-Photos.hasMany(Comments, {onDelete: 'cascade'}) //Delete photo, delete comments
+Photos.hasMany(Comments, { onDelete: 'cascade' }) //Delete photo, delete comments
 
 Profiles.belongsTo(Users)
 
@@ -100,8 +94,8 @@ Profiles.belongsTo(Users)
 
 // Export models
 module.exports = {
-  db,
-  Users,
-  Photos,
-  Comments
+    db,
+    Users,
+    Photos,
+    Comments
 }
