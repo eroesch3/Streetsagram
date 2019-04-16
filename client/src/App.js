@@ -5,6 +5,7 @@ import axios from 'axios'
 import UpdatePhoto from './Components/updatePhoto.js'
 import PhotosFeed from './Components/PhotosFeed.js'
 import UploadForm from './Components/uploadForm'
+import SinglePhoto from './Components/SinglePhoto'
 import {
   Route,
   Link,
@@ -69,12 +70,9 @@ componentDidMount = () => {
           <Nav />
 
           <Switch>
+          <Route exact path ='/photo/:id' render={(props)=> <SinglePhoto {...props}/>}/>
           <Route exact path="/" render={() => <PhotosFeed photos={this.state.photos} deletePhotoFromState={this.deletePhotoFromState}/> } />
-
           <Route exact path="/Post" render={() => <UploadForm />} />
-          <Route exact path ='/photo/:id' render={()=> <UpdatePhoto/>}/>
-
-   
       </Switch>    
       </div>
       </div>
