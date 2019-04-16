@@ -1,11 +1,35 @@
-# Streetsagram
-Full stack app where users create profiles to share and comment on streetscape photos. Streetstagram builds community by
+# Streetstagram
+Full stack app where users create profiles to share streetscape photos. Streetstagram builds community by
 creating a platform for neighbors to share current events, artists to share their work, and for individuals to engage with
 each other by sharing images of their daily life.
 
-Streetstagram uses React.js, Express, Sequelize and Node.js.
+Streetstagram uses React.js, Express, Sequelize and Node.js. 
 
-### User Stories
+Streetstagram communicates with AWS cloud storage to host image urls.
+
+## Installation and Set up
+The Streetstagram database is deployed to [Heroku](https://streetstagram.herokuapp.com/).
+
+### Create the Database
+
+1. `createdb streetstagram_db`
+1. `node scripts/resetDb.js`
+1. `node scripts/seedDb.js`
+
+### Install packages
+`npm install --save express aws-sdk bluebird fs file-type multiparty cors morgan`
+
+### Run the server
+
+1. `node server.js`
+
+### Run the app
+
+1. `cd client`
+1. `npm start`
+
+
+## User Stories
 - As an artist I want to find street shots so that I can be inspired.  
 - As a tourist I want to find street shots so that I can find fun places to go.
 - As a model/photographer I want to find street shots so that I can locate good shooting locations.
