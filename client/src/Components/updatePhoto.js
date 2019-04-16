@@ -37,6 +37,7 @@ class UpdatePhoto extends Component {
       console.log(error)
     })
   }
+  ///add a delete button 
 
   onFormSubmit = async (event) => {
     event.preventDefault()
