@@ -165,15 +165,16 @@ class UpdatePhoto extends Component {
               value='submit'
               text='Submit Photo'>
               Update Photo</button>
-            <button 
-              onClick={()=>this.deletePhoto()}
+          </div>
+
+        </form>
+
+        <button 
+              onClick={this.deletePhoto}
               id='update--deleteButton'
               type='submit'
               value='submit'  
               text='Delete Photo'>Delete Photo</button> 
-          </div>
-
-        </form>
       </div>
     )
   }
