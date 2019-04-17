@@ -38,11 +38,11 @@ class UpdatePhoto extends Component {
       console.log(error)
     })
   }
-  ///add a delete button 
 
-  deletePhoto = async () => {
+  deletePhoto = async (event) => {
     await axios.delete(`https://streetstagram.herokuapp.com/photo/${this.props.photoId}`)
       .then(res => console.log(res, 'photo deleted'))
+      window.location.pathname = '/'
   }
 
   onFormSubmit = async (event) => {
