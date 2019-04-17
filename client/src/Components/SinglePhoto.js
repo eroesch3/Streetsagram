@@ -39,14 +39,14 @@ class SinglePhoto extends Component {
     return singlePhoto.map((photo) =>
       <div className='singlePhoto--photoContain' key={photo.id}>
         <div className='singlePhoto--photoContain--photoDetails'>
-          <a href={`/photo/${photo.id}`}><img className='singlePhoto--photoContain--photo' src={photo.image} /></a>
+          <img className='singlePhoto--photoContain--photo' src={photo.image} />
           <div className='singlePhoto--photoContain--photoDetails--description'>{photo.description}</div>
           <div className='singlePhoto--photoContain--photoDetails--street'>{photo.street} X {photo.cross_street}</div>
         </div>
-        
         <div className='singlePhoto--photoContain--photoUD'>
           <div className='singlePhoto--photoContain--photoUD--update'>
             <UpdatePhoto
+             
               photoId={photo.id}
               url={photo.url}
               description={photo.description}
@@ -64,7 +64,6 @@ class SinglePhoto extends Component {
     return (
 
       <div className='singlePhoto' >
-
         {this.showPhoto()}
       </div>
     )

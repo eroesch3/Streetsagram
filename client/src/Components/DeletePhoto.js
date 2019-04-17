@@ -9,7 +9,7 @@ export default class DeletePhoto extends Component {
   }
 
   deletePhoto = async () => {
-    axios.delete(`https://streetstagram.herokuapp.com/photo/${this.props.photoid}`)
+    axios.delete(`${global.serverurl}/photo/${this.props.photoid}`)
       .then(res => this.props.deletePhotoFromState(this.props.photoid))
   }
 

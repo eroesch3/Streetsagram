@@ -30,6 +30,8 @@ app.use(cors());
 app.use("/", express.static("./build/"));
 //USE ABOVE LINE WHEN WE DEPLOY !!!
 
+
+
 //AWS upload file
 const uploadFile = (buffer, name, type) => {
   const params = {

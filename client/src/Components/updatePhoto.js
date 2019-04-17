@@ -13,6 +13,7 @@ class UpdatePhoto extends Component {
       cross_street: ''
     }
     this.handleFileUpload = this.handleFileUpload.bind(this)
+    this.deletePhoto=this.deletePhoto.bind(this)
   }
 
   onFormChange = event => {
@@ -36,6 +37,12 @@ class UpdatePhoto extends Component {
     }).catch(error => {
       console.log(error)
     })
+  }
+
+  deletePhoto = async (event) => {
+    await axios.delete(`https://streetstagram.herokuapp.com/photo/${this.props.photoId}`)
+      .then(res => console.log(res, 'photo deleted'))
+      window.location.pathname = '/'
   }
 
   onFormSubmit = async (event) => {
@@ -158,14 +165,16 @@ class UpdatePhoto extends Component {
               value='submit'
               text='Submit Photo'>
               Update Photo</button>
-            <button 
+          </div>
+
+        </form>
+
+        <button 
+              onClick={this.deletePhoto}
               id='update--deleteButton'
               type='submit'
               value='submit'  
               text='Delete Photo'>Delete Photo</button> 
-          </div>
-
-        </form>
       </div>
     )
   }
