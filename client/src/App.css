@@ -208,15 +208,15 @@
 
 .updateform--updateInfoContain{
   height: auto;
-  max-width: 500px;
+  max-width: 300px;
   display: flex;
   flex-direction: column;
-  margin: 10% auto;
+  margin: 0 auto;
   align-content: center;
   border-radius: 8px;
   border: 15px dashed black;
-  padding: 20px;
-  background-color: rgba(17, 6, 39, 0.5);
+  padding: 0 20px 0 20px;
+  /* background-color: rgba(17, 6, 39, 0.5); */
 }
 .updateform--updatePhoto--url{
   display: flex;
@@ -237,7 +237,7 @@
   display: flex;
   flex-direction: column;
   align-self: center;
-  font-size: 18px;
+  font-size: 14px;
   color: white;
 }
 
@@ -254,7 +254,7 @@
   flex-direction: column;
   align-self: center;
   margin-top: 20px;
-  font-size: 18px;  
+  font-size: 14px;  
   color: white;
 }
 
@@ -263,24 +263,25 @@
   flex-direction: column;
   align-self: center;
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 14px;
   color: white;
 }
 #update--infoSubmit{
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 60px;
   margin-top: 20px;
   border-radius: 8px;
   font-family: 'Special Elite', cursive;
-  font-size: 16px;
+  font-size: 12px;
 }
 #update--deleteButton{
-  height: 80px;
-  width: 80px;
-  margin-top: 20px;
+  height: 40px;
+  width: 180px;
+  /* margin-top: 20px; */
   border-radius: 8px;
   font-family: 'Special Elite', cursive;
   font-size: 16px;
+  color: red;
 }
 #update--photoStreet{
   width: 250px;
@@ -297,7 +298,6 @@
 /* singlePhoto */
 
 .singlePhoto{
-  height: auto;
   width:80%;
   margin: 0 auto;
 }
@@ -306,25 +306,36 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 665px;
+
   overflow: scroll;
-  width: 78%;
+  width: 80%;
   margin: 0 auto;
   background-color: black;
   color: white;
-  
+  padding: 50px 0 50px 0;
 
   
+}
+.singlePhoto--photoContain--photo{
+  border: 3px #F4D812 solid;
+  margin-bottom: 20px;
 }
 .singlePhoto--photoContain--photoDetails{
   display: flex;
   flex-direction: column;
 }
+.singlePhoto--photoContain--photoDetails--description{
+font-size: 20px;
+padding-bottom: 10px;
+}
 .singlePhoto--photoContain--photo{
-  max-width: 370px;
+  max-width: 300px;
   height: auto;
   margin-left: 55px;
   border-radius: 10px;
+}
+.singlePhoto--photoContain--photoUD{
+  margin: 0 auto;
 }
 .singlePhoto--photoContain--photoUD--update{
   margin-right: 0 auto;
