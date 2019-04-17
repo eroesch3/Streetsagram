@@ -38,8 +38,8 @@ class SinglePhoto extends Component {
 
     return singlePhoto.map((photo) =>
       <div className='singlePhoto--photoContain' key={photo.id}>
-        <a href={`/photo/${photo.id}`}><img className='singlePhoto--photoContain--photo' src={photo.image} /></a>
         <div className='singlePhoto--photoContain--photoDetails'>
+          <img className='singlePhoto--photoContain--photo' src={photo.image} />
           <div className='singlePhoto--photoContain--photoDetails--description'>{photo.description}</div>
           <div className='singlePhoto--photoContain--photoDetails--street'>{photo.street} X {photo.cross_street}</div>
         </div>
@@ -63,7 +63,7 @@ class SinglePhoto extends Component {
     console.log('render show state description', this.state.photo)
     return (
 
-      <div className='singlePhoto--photoContain' >
+      <div className='singlePhoto' >
         {this.showPhoto()}
       </div>
     )
